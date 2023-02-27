@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>나는 jsp 에용!!</title>
+    <title> 기본페이지 </title>
   </head>
   <body>
-  에옹
+  <h1>  기본페이지 </h1>
   </body>
 </html>

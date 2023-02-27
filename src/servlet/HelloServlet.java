@@ -20,7 +20,7 @@ public class HelloServlet extends HttpServlet {
                 "<body>" +
                 "<h1 align=center>Servlet </h1><br>" +
                 "<br>" + today +"</body></html>");
-        out.append(" hello hello ! "); // 한글 인\코딩 안되네
+        out.append(" hello hello ! "); // 한글 인코딩 안되네
 
     }
 
