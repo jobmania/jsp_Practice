@@ -7,10 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+<p> 세션 유지시간 (초)</p>
+<%-- 1800 초 --%>
+<p> <%= session.getMaxInactiveInterval() %></p>
+</body>
 </html>
