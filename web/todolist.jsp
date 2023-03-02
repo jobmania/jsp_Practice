@@ -46,7 +46,6 @@
       session.setAttribute("myToDoList", items);
     }
 
-
   }
 
 %>

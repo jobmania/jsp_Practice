@@ -53,7 +53,7 @@ public class User2 {
         }else if (password.isEmpty()) {
             this.message = "비번을 입력하지 않음";
             return false;
-        }else if (!email.matches("\\w+@\\w+.\\w+")) {
+        }else if (!email.matches("[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$")) {
             this.message = "이메일 형식이 맞지 않음";
             return false;
         }else if (password.length() < 4) {
