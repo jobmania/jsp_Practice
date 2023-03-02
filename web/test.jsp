@@ -12,11 +12,11 @@
 </head>
 <body>
 <%-- ctrl + shift + /     print가 없어도 출력값이 나온다 --%>
-    영문 대문자로 변환 : <%= new String("Hello the world!!").toUpperCase() %>
-    <br><br>
-        25 곱하기 4 -> <%= 25 * 4 %>
-    <br><br>
-        판단하기 true or false : <%=  1 > 2 %>
+영문 대문자로 변환 : <%= new String("Hello the world!!").toUpperCase() %>
+<br><br>
+25 곱하기 4 -> <%= 25 * 4 %>
+<br><br>
+판단하기 true or false : <%=  1 > 2 %>
 
 
 </body>

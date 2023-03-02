@@ -13,12 +13,18 @@
 <body>
 
 <%-- 폼 태그 안에 입력창에 데이터 입력후 submit버튼 클릭시 폼태그의 서버주소로 http 메소드 방식으로 전송됨--%>
+<%--에러메시지 --%>
+
+<%= request.getAttribute("errorMessage") %>
+<div style="background-color: crimson">${errorMessage}</div>
 
 <form action="/Controller" method="post">
-  <input type ="text" name = "user">
-  <input type = "submit" value="전송">
-</form>
+    이메일 : <input type="email" name="email"> <br>
+    패스워드 : <input type="password" name="password"> <br>
+    <input type="submit" value="전송">
 
+
+</form>
 
 </body>
 </html>

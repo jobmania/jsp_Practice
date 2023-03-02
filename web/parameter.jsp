@@ -16,8 +16,8 @@
   String user = request.getParameter("user");
   String id = request.getParameter("id");
 
-  out.println("유저 이름 파라미터 값 "+user + "<br>");
-  out.println("유저 아이디 파라미터값 "+id);
+  out.println("유저 이름 파라미터 값 : "+user + "<br>");
+  out.println("유저 아이디 파라미터값 : "+id);
 
 %>
 

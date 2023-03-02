@@ -1,5 +1,7 @@
 package controller;
 
+import beans.User2;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,14 +29,19 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String user = req.getParameter("user");
-        System.out.println(user);
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
+        User2 user2 = new User2(email, password);
 
-//      웹페이지 응답값 출력
-        PrintWriter out = resp.getWriter();
-        out.println("<html>");
-        out.println("user Post " + user);
-        out.println("</html>");
+        if(user2.validate()){
+            // 합격페이지(jsp)로
+            req.setAttribute("email",email);
+            req.getRequestDispatcher("welcome.jsp").forward(req,resp);
+        }else {
+            // 다시 입력 (jsp)로 이동, 에러메세지를 리퀘스트 객체에 넣어 전달..
+            req.setAttribute("errorMessage",user2.getMessage());
+            req.getRequestDispatcher("form1.jsp").forward(req,resp);
+        }
 
     }
 }
