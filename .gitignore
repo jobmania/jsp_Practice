@@ -7,8 +7,8 @@
 
 
 ### IntelliJ IDEA ###
-.idea
-
+.idea/**
+.out/**
 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -145,4 +145,4 @@ fabric.properties
 hs_err_pid*
 replay_pid*
 
-# End of https://www.toptal.com/developers/gitignore/api/intellij,java
+# End of https://www.toptal.com/developers/gitignore/api/intellij,java!/.idea/
