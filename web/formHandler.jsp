@@ -7,10 +7,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<jsp:useBean id="user" class="beans.User"></jsp:useBean>
+<jsp:setProperty name="user" property="*"></jsp:setProperty>
+
+
+    <p> 유저 : <%= user.getUser()%></p>
+    <p> 이메일 : <%= user.getEmail()%></p>
+    <p> 비밀번호 : <%= user.getPassword()%></p>
+
+
+</body>
 </html>
