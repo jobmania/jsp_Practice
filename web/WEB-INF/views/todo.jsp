@@ -20,7 +20,7 @@
 
     <ol>
       <c:forEach items="${todos}" var="todo">
-        <li>${todo.name} <a href="delete-todo?todo=${todo.name}" style="background-color: lightcoral"> 삭제 </a>  </li>
+        <li>${todo.name} <a href="delete-todo.do?todo=${todo.name}" style="background-color: lightcoral"> 삭제 </a>  </li>
       </c:forEach>
     </ol>
 
