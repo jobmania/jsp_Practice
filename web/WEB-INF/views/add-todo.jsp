@@ -1,0 +1,28 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 2023-03-06
+  Time: 오전 10:25
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="../common/header.jspf"%>
+<%@ include file="../common/navigation.jspf"%>
+
+
+<div class="container">
+  새로 할일 작성하기:
+  <form method="POST" action="add-todo.do">
+    <fieldset class="form-group">
+      <label>할일 설명</label> <input name="todo" type="text"
+                                  class="form-control" /> <BR />
+    </fieldset>
+    <fieldset class="form-group">
+      <label>종 류</label> <input name="category" type="text"
+                                class="form-control" /> <BR />
+    </fieldset>
+    <input name="add" type="submit" class="btn btn-success" value="추가하기" />
+  </form>
+</div>
+
+<%@ include file="../common/footer.jspf"%>

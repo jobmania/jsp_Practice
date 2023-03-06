@@ -11,21 +11,21 @@ public class TodoService {
 
 
     static {
-        todos.add(new Todo("Learn JSP"));
-        todos.add(new Todo("Learn Spring"));
-        todos.add(new Todo("Learn Spring MVC"));
+        todos.add(new Todo("Learn JSP", "BE"));
+        todos.add(new Todo("Learn Spring", "BE"));
+        todos.add(new Todo("Learn Spring MVC", "BE"));
     }
 
     public List<Todo> getTodos() {
         return todos;
     }
 
-    public void addTodo(String todo) {
-        todos.add(new Todo(todo));
+    public void addTodo(String todo, String category) {
+        todos.add(new Todo(todo , category));
     }
 
-    public void deleteTodo(String name) {
-        todos.removeIf(todo -> todo.getName().equals(name));
+    public void deleteTodo(String name, String category) {
+        todos.removeIf(todo -> (todo.getName().equals(name)&&todo.getCategory().equals(category)));
     }
 
     public boolean sameTodo(String name) {
