@@ -12,7 +12,7 @@
 
 
 <div class="container">
-  새로 할일 작성하기:
+  새로 할일 작성하기: <p style="color: crimson">${error}</p>
   <form method="POST" action="add-todo.do">
     <fieldset class="form-group">
       <label>할일 설명</label> <input name="todo" type="text"
