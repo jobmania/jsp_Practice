@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="bookmarket:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/artifacts/jsp_work_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Java_EE_6_Java_EE_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jsp_work.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.annotation.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.ejb.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.jms.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.persistence.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.resource.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.servlet.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.servlet.jsp.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.servlet.jsp.jstl.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/javax.transaction.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/WEB-INF/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/WEB-INF/classes/servlet/HelloServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/WEB-INF/classes/servlet/HiServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/artifacts/jsp_work_war_exploded/time.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/jsp_work/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/jsp_work/servlet/HelloServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/jsp_work/servlet/HiServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/beans/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/beans/Scope.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/beans/Session.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/beans/Todo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/beans/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/beans/User2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/controller/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/filter/EncodingFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/filter/LoginRequiredFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/gui/TextOut.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/gui/URLParameter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/service/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/service/TodoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/AddTodoServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/DeleteTodoServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/HiServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/ListTodoServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/LoginServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/servlet/LogoutServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/common/footer.jspf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/common/header.jspf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/common/navigation.jspf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/views/add-todo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/views/list-todos.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/views/login.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/views/todo.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/views/welcome.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/beanParam.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/copyright.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/declaration.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/form1.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/form2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/formHandler.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/forward.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/getBean.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/gugudan.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/include.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/main.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/parameter.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/redirect.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/session.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/setBean.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/showcart.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/test.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/test2.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/time.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/todolist.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/update.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/welcome.jsp" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Jsp File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2McswAmwQN6XUDDwIxBZGpy8BQX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/admin/IdeaProjects/jsp_work/todo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\IdeaProjects\bookmarket\web" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.72" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.72" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="bookmarket:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="5fb1c682-0c39-4f0e-aa0c-f991a6d8de51" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54643" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="bookmarket:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="" />
+      <created>1678078445196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678078445196</updated>
+      <workItem from="1678078446320" duration="7333000" />
+      <workItem from="1678086040753" duration="43000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
