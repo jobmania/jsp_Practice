@@ -1,5 +1,7 @@
 package servlet;
 
+import service.TodoService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,9 @@ public class ListTodoServlet extends HttpServlet {
         } else {
             todoService.addTodo(todo,category);
         }
-        req.setAttribute("todos", todoService.getTodos());
-        req.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(req, resp);
+//        req.setAttribute("todos", todoService.getTodos());
+//        req.getRequestDispatcher("/WEB-INF/views/todo.jsp").forward(req, resp);
+
+        resp.sendRedirect("list-todos.jsp");
     }
 }

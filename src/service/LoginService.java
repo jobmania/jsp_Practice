@@ -1,4 +1,4 @@
-package servlet;
+package service;
 
 public class LoginService {
     public boolean isUserValid(String user, String pw){
