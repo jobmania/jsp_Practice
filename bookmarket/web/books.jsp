@@ -10,7 +10,7 @@ use File | Settings | File Templates. --%>
 <html>
 <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        href="resources/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
         crossorigin="anonymous"
 />
@@ -36,9 +36,12 @@ use File | Settings | File Templates. --%>
             Book book = listOfBooks.get(i);
     %>
     <div class="row">
-        <div class="col-md-10">
-            <p><h5><b>[<%=book.getCategory()%>] <%=book.getName()%> </b></h5>
-            <p style="padding-top: 20px"><%=book.getDescription().substring(0, 100)%>...삭제 할까 말까
+        <div class="col-md-3"  align="center">
+            <img src="/upload/<%=book.getFilename()%>" style="width:50%">
+        </div>
+        <div class="col-md-7">
+            <p><h5><b>[<%=book.getCategory()%>] <%=book.getName()%></b></h5>
+            <p style="padding-top: 20px"><%=book.getDescription().substring(0, 100)%>...
             <p><%=book.getAuthor()%> | <%=book.getPublisher()%> | <%=book.getUnitPrice()%>원
         </div>
         <div class="col-md-2" style="padding-top: 70px">

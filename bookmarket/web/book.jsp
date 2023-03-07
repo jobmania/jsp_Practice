@@ -9,7 +9,7 @@ use File | Settings | File Templates. --%>
 <html>
 <link
         rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        href="resources/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
         crossorigin="anonymous"
 />
@@ -31,18 +31,26 @@ use File | Settings | File Templates. --%>
 %>
 
 <div class="container">
-    <h4><b>[<%=book.getCategory()%>]<%=book.getName()%>
-    </b></h4>
-    <p><%=book.getDescription()%>
-    <p><b>도서코드 : </b><span class="badge badge-danger"> <%=book.getBookId()%></span>
-    <p><b>저자</b> : <%=book.getAuthor()%>
-    <p><b>출판사</b> : <%=book.getPublisher()%>
-    <p><b>출판일</b> : <%=book.getReleaseDate()%>
-    <p><b>총 페이지수</b> : <%=book.getTotalPages()%>
-    <p><b>재고수</b> : <%=book.getUnitsInStock()%>
-    <h4><%=book.getUnitPrice()%>원</h4>
-    <p><a href="#" class="btn btn-info">도서주문 &raquo;</a>
-        <a href="books.jsp" class="btn btn-secondary">도서목록 &raquo;</a>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="/upload/<%=book.getFilename()%>" style="width: 100%"/>
+        </div>
+        <div class="col-md-8">
+            <h4><b>[<%=book.getCategory()%>]<%=book.getName()%>
+            </b></h4>
+            <p><%=book.getDescription()%>
+            <p><b>도서코드 : </b><span class="badge badge-danger"> <%=book.getBookId()%></span>
+            <p><b>저자</b> : <%=book.getAuthor()%>
+            <p><b>출판사</b> : <%=book.getPublisher()%>
+            <p><b>출판일</b> : <%=book.getReleaseDate()%>
+            <p><b>총 페이지수</b> : <%=book.getTotalPages()%>
+            <p><b>재고수</b> : <%=book.getUnitsInStock()%>
+            <h4><%=book.getUnitPrice()%>원</h4>
+            <p><a href="#" class="btn btn-info">도서주문 &raquo;</a>
+                <a href="books.jsp" class="btn btn-secondary">도서목록 &raquo;</a>
+        </div>
+    </div>
+
     <hr>
 </div>
 
