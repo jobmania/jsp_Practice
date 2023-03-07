@@ -16,6 +16,7 @@
             rel="stylesheet"
             href="resources/css/bootstrap.min.css"
     />
+    <script src="./resources/js/validation.js"></script>
 </head>
 <body>
 <%@ include file="menu.jsp"%>
@@ -26,6 +27,11 @@
 </div>
 
 <div class="container">
+
+    <div class="text-right">
+        <a href="./logout.jsp" class="btn btn-sm btn-success pull-right">로그아웃</a>
+    </div>
+
     <form name="newBook" action="./processAddBook.jsp"
           class="form-horizontal" method="post" enctype="multipart/form-data">
         <div class="form-group row">
@@ -109,7 +115,7 @@
 
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10 ">
-                <input type="submit" class="btn btn-primary" value="등록">
+                <input type="button" onclick="CheckAddBook()" class="btn btn-primary" value="등록">
             </div>
         </div>
 

@@ -11,12 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookmarket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/bookmarket.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dto/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/addBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/addBook.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/processAddBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/processAddBook.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/welcome.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/resources/js/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/resources/js/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JavaScript File" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -176,7 +174,7 @@
       <updated>1678078445196</updated>
       <workItem from="1678078446320" duration="7333000" />
       <workItem from="1678086040753" duration="43000" />
-      <workItem from="1678147956058" duration="8317000" />
+      <workItem from="1678147956058" duration="15371000" />
     </task>
     <servers />
   </component>

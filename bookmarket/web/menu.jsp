@@ -6,7 +6,8 @@ language="java" %>
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="./welcome.jsp">Home</a>
-      <a class="navbar-brand" href="books.jsp">Books</a>
+      <a class="navbar-brand" href="./books.jsp">Books</a>
+      <a class="navbar-brand" href="./addBook.jsp">Add</a>
     </div>
   </div>
 </nav>
