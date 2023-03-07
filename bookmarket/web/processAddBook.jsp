@@ -1,4 +1,7 @@
 <%@ page import="dto.Book" %>
+<%@ page import="com.oreilly.servlet.MultipartRequest" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
+<%@ page import="java.util.Enumeration" %>
 <jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session"></jsp:useBean>
 
 
@@ -6,47 +9,67 @@
 use File | Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8"
          language="java" %>
-<html>
-<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-        crossorigin="anonymous"
-/>
-<head>
-    <title> 도서정보 </title>
-</head>
-<body>
-
-<%@ include file="menu.jsp" %>
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3">도서 정보</h1>
-    </div>
-</div>
 
 <%
-    String id = request.getParameter("id");
-    Book book = bookDAO.getBookById(id);
+
+    request.setCharacterEncoding("UTF-8");
+
+    String realFolder = "C:\\upload"; // 웹 어플리케이션상의 절대 경로
+    String encType = "utf-8"; // 인코딩 타입
+    int maxSize = 5 * 1024 * 1024; // 최대 업로드될 파일의 크기5MB
+    // DefaultFileRenmaePolicy 동일한 이름이 있을시 +1~
+    MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+
+    // request -> multiPartRequest로 수정.
+    String bookId = multi.getParameter("bookId");
+    String name = multi.getParameter("name");
+    String unitPrice = multi.getParameter("unitPrice");
+    String author = multi.getParameter("author");
+    String publisher = multi.getParameter("publisher");
+    String releaseDate = multi.getParameter("releaseDate");
+    String totalPages = multi.getParameter("totalPages");
+    String description = multi.getParameter("description");
+    String category = multi.getParameter("category");
+    String unitsInStock = multi.getParameter("unitsInStock");
+    String condition = multi.getParameter("condition");
+
+
+    Enumeration files = multi.getFileNames(); //폼 요소 중 file 속성을 가진 파라미터 이름을 Enumeration 객체로 반환합니다.
+    String fname = (String) files.nextElement();
+    String fileName = multi.getFilesystemName(fname);//실제 서버상에 업로드 된 파일 이름을 String 객체로 반환
+
+
+    Integer price;
+    if(unitPrice.isEmpty()) price = 0;
+    else price = Integer.valueOf(unitPrice);
+
+
+    long stock;
+    if (unitsInStock.isEmpty()) stock = 0;
+    else stock = Long.valueOf(unitsInStock);
+
+    long pages;
+    //도서총페이지수 없으면 0 있으면 정수변환(Long타입)
+    if (totalPages.isEmpty()) pages = 0;
+    else pages = Long.valueOf(totalPages);
+
+
+
+    Book newBook = new Book();
+    newBook.setBookId(bookId);
+    newBook.setName(name);
+    newBook.setUnitPrice(price);
+    newBook.setAuthor(author);
+    newBook.setPublisher(publisher);
+    newBook.setReleaseDate(releaseDate);
+    newBook.setTotalPages(pages);
+    newBook.setDescription(description);
+    newBook.setCategory(category);
+    newBook.setUnitsInStock(stock);
+    newBook.setCondition(condition);
+    newBook.setFilename(fileName);
+
+    bookDAO.addBook(newBook);
+
+    response.sendRedirect("books.jsp");
 %>
-
-<div class="container">
-    <h4><b>[<%=book.getCategory()%>]<%=book.getName()%>
-    </b></h4>
-    <p><%=book.getDescription()%>
-    <p><b>도서코드 : </b><span class="badge badge-danger"> <%=book.getBookId()%></span>
-    <p><b>저자</b> : <%=book.getAuthor()%>
-    <p><b>출판사</b> : <%=book.getPublisher()%>
-    <p><b>출판일</b> : <%=book.getReleaseDate()%>
-    <p><b>총 페이지수</b> : <%=book.getTotalPages()%>
-    <p><b>재고수</b> : <%=book.getUnitsInStock()%>
-    <h4><%=book.getUnitPrice()%>원</h4>
-    <p><a href="#" class="btn btn-info">도서주문 &raquo;</a>
-        <a href="books.jsp" class="btn btn-secondary">도서목록 &raquo;</a>
-    <hr>
-</div>
-
-
-</body>
-<%@ include file="footer.jsp" %>
-</html>
