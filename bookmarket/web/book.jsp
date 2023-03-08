@@ -1,9 +1,7 @@
 <%@ page import="dto.Book" %>
 <jsp:useBean id="bookDAO" class="dao.BookRepository" scope="session"></jsp:useBean>
+<%@ page errorPage="exceptionNoBookId.jsp"%>
 
-
-<%-- Created by IntelliJ IDEA. User: admin Date: 2023-03-06 Time: 오후 1:54 To change this template
-use File | Settings | File Templates. --%>
 <%@ page contentType="text/html;charset=UTF-8"
          language="java" %>
 <html>
@@ -15,6 +13,13 @@ use File | Settings | File Templates. --%>
 />
 <head>
     <title> 도서정보 </title>
+    <script>
+        function addToCart() {
+            if (confirm('도서를 장바구니에 추가하시겠습니까?')) {
+                document.addForm.submit();
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -46,8 +51,13 @@ use File | Settings | File Templates. --%>
             <p><b>총 페이지수</b> : <%=book.getTotalPages()%>
             <p><b>재고수</b> : <%=book.getUnitsInStock()%>
             <h4><%=book.getUnitPrice()%>원</h4>
-            <p><a href="#" class="btn btn-info">도서주문 &raquo;</a>
-                <a href="books.jsp" class="btn btn-secondary">도서목록 &raquo;</a>
+
+            <form name="addForm" action="./addCart.jsp?id=<%=book.getBookId()%>" method="post">
+                <button type="button" class="btn btn-info" onclick="addToCart()">도서주문 &raquo;</button>
+                <a href="./cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
+                <a href="./books.jsp" class="btn btn-secondary">도서목록 &raquo;</a>
+            </form>
+
         </div>
     </div>
 

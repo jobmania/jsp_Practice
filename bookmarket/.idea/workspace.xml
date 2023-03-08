@@ -10,10 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/web/addCart.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/cart.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/deleteCart.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/exceptionNoBookId.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/exceptionNoPage.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/removeCart.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/addBook.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/addBook.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dto/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/book.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/book.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/resources/js/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/resources/js/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/admin/IdeaProjects/jsp_work/bookmarket/web/WEB-INF/lib/cos-09May2002.jar",
+    "last_opened_file_path": "C:/Users/admin/IdeaProjects/springmvc/servlet",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,6 +79,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\IdeaProjects\jsp_work\bookmarket\web" />
       <recent name="C:\Users\admin\IdeaProjects\bookmarket\web" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\IdeaProjects\jsp_work\bookmarket\web" />
     </key>
   </component>
   <component name="RunManager">
@@ -174,7 +185,8 @@
       <updated>1678078445196</updated>
       <workItem from="1678078446320" duration="7333000" />
       <workItem from="1678086040753" duration="43000" />
-      <workItem from="1678147956058" duration="15371000" />
+      <workItem from="1678147956058" duration="16532000" />
+      <workItem from="1678234261126" duration="8459000" />
     </task>
     <servers />
   </component>

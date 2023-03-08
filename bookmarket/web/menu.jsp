@@ -8,6 +8,7 @@ language="java" %>
       <a class="navbar-brand" href="./welcome.jsp">Home</a>
       <a class="navbar-brand" href="./books.jsp">Books</a>
       <a class="navbar-brand" href="./addBook.jsp">Add</a>
+      <a class="navbar-brand" href="./cart.jsp">Cart</a>
     </div>
   </div>
 </nav>

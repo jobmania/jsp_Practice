@@ -13,7 +13,16 @@ public class Book {
     private long totalPages; // 페이지 수
     private String releaseDate; // 출판일(월/년)
     private String condition; // 신규 도서 or 중고 도서 or E-Book
-    private String filename;
+    private String filename; // img 파일이름.
+    private int quantity; // 장바구니 담은 갯수
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getFilename() {
         return filename;

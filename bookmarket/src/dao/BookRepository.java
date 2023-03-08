@@ -9,7 +9,7 @@ public class BookRepository {
     private ArrayList<Book> listOfBooks = new ArrayList<>();
 
     public BookRepository() {
-        Book html = new Book("ISBN1234", "HTML5+CSS3", 15000);
+        Book html = new Book("ISBN1234", "클린 코드", 15000);
         html.setAuthor("황재호");
         html.setCategory("Hello Coding");
         html.setCondition("New");
@@ -58,7 +58,8 @@ public class BookRepository {
 
     public Book getBookById(String id) {
         Optional<Book> optionalBook =  listOfBooks.stream().filter(b -> b.getBookId().equals(id)).findFirst();
-        return optionalBook.orElse(new Book("ID 조회 안됩니다","이름 조회 안됩니다",0));
+//        return optionalBook.orElse(new Book("ID 조회 안됩니다","이름 조회 안됩니다",0)); // 예외 처리 페이지 생성 후
+        return optionalBook.get();  // 예외 처리 페이지 생성 후
     }
 
     public void addBook(Book book){
