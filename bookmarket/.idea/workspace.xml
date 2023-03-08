@@ -9,20 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/web/addCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/cart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/deleteCart.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/exceptionNoBookId.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/exceptionNoPage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/removeCart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dto/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/book.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/book.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/menu.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/admin/IdeaProjects/springmvc/servlet",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/admin/IdeaProjects/springmvc/servlet&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\IdeaProjects\jsp_work\bookmarket\web" />
@@ -187,6 +174,7 @@
       <workItem from="1678086040753" duration="43000" />
       <workItem from="1678147956058" duration="16532000" />
       <workItem from="1678234261126" duration="8459000" />
+      <workItem from="1678251470562" duration="117000" />
     </task>
     <servers />
   </component>
