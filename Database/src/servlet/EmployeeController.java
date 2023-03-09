@@ -47,6 +47,37 @@ public class EmployeeController extends HttpServlet {
 
     }
 
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String id = request.getParameter("id");
+
+        Employee e = new Employee();
+        e.setName(request.getParameter("name"));
+        e.setDepartment(request.getParameter("department"));
+        e.setDob(request.getParameter("dob"));
+
+        if(id.isEmpty() || id == null) {
+
+            if(employeeDAO.save(e)) {
+                request.setAttribute("note", "Employee Saved Successfully!");
+            }
+
+        }else {
+
+            e.setId(Integer.parseInt(id));
+            if(employeeDAO.update(e)) {
+                request.setAttribute("note", "Employee Updated Successfully!");
+            }
+
+        }
+
+        listEmployee(request, response);
+    }
+
+
+
+
     private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         if(employeeDAO.delete(Integer.parseInt(id))){
@@ -60,7 +91,7 @@ public class EmployeeController extends HttpServlet {
         Employee e = employeeDAO.get(Integer.parseInt(id));
 
         request.setAttribute("employee",e);
-        request.getRequestDispatcher("views/employee-list.jsp").forward(request,response);
+        request.getRequestDispatcher("views/employee-form.jsp").forward(request,response);
     }
 
     private void listEmployee(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

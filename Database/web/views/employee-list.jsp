@@ -20,14 +20,15 @@
 
     <p>
         <button class = "btn btn-primary" onclick="window.location.href = '/views/employee-form.jsp'">직원 추가</button>
+        <a class="btn btn-primary" href="views/employee-form.jsp">직원 추가</a>
     </p>
 
     <table class = "table table-striped table-bordered">
 
         <tr class = "thead-dark">
             <th>Name</th>
-            <th>Department</th>
             <th>Date of birth</th>
+            <th>Department</th>
             <th>Actions</th>
         </tr>
 
@@ -35,8 +36,8 @@
 
             <tr>
                 <td>${employee.name}</td>
-                <td>${employee.department}</td>
                 <td>${employee.dob}</td>
+                <td>${employee.department}</td>
                 <td>
                     <a href = "${pageContext.request.contextPath}/EmployeeController?action=EDIT&id=${employee.id}">Edit</a>
                     |

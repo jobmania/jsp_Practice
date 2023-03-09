@@ -31,8 +31,8 @@ public class EmployeeDATOImpl implements EmployeeDAO {
                 employee = new Employee();
                 employee.setId(resultSet.getInt("id"));
                 employee.setName(resultSet.getString("name"));
-                employee.setDob(resultSet.getString("department"));
-                employee.setDepartment(resultSet.getString("dob"));
+                employee.setDob(resultSet.getString("dob"));
+                employee.setDepartment(resultSet.getString("department"));
                 list.add(employee);
             }
 
@@ -56,8 +56,8 @@ public class EmployeeDATOImpl implements EmployeeDAO {
             if (resultSet.next()) {
                 employee.setId(resultSet.getInt("id"));
                 employee.setName(resultSet.getString("name"));
-                employee.setDob(resultSet.getString("department"));
-                employee.setDepartment(resultSet.getString("dob"));
+                employee.setDob(resultSet.getString("dob"));
+                employee.setDepartment(resultSet.getString("department"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,7 +117,7 @@ public class EmployeeDATOImpl implements EmployeeDAO {
 
         try {
 
-            String sql = "UPDATE emp SET name =? department=? dob=? WHERE id=?";
+            String sql = "UPDATE emp SET name =?, department=?, dob=? WHERE id=?";
             connection = DBConnectionUtil.openConnection(); // DB연결객체
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, employee.getName());

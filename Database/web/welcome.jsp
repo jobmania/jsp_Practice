@@ -29,6 +29,7 @@ use File | Settings | File Templates. --%>
         <h3><%=tagline%>
         </h3>
     </div>
+    <button></button>
 </div>
 </body>
 

@@ -10,7 +10,7 @@
 	
 	<div class = "container">
 	
-		<h1>Employee Directory</h1>
+		<h1> ${employee==null?"직원 추가":"직원 수정"} </h1>
 		<hr/>
 		
 		<div class = "row">
@@ -20,15 +20,17 @@
 					<div class = "form-group">
 						<input type = "text" class = "form-control" name = "name" placeholder = "Enter Name" value = "${employee.name}"/>
 					</div>
-				
+
+
 					<div class = "form-group">
 						<input type = "date" class = "form-control" name = "dob" value = "${employee.dob}"/>
 					</div>
-				
+
 					<div class="form-group">
-					  	<input type = "text" class = "form-control" name = "department" placeholder = "Enter Department" value = "${employee.department}"/>
+						<input type = "text" class = "form-control" name = "department" placeholder = "Enter Department" value = "${employee.department}"/>
 					</div>
-				
+
+
 					<input type = "hidden" name = "id" value = "${employee.id}"/>
 				
 					<button type = "submit" class = "btn btn-primary">Save</button>

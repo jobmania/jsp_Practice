@@ -10,20 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Database/.idea/libraries/jstl_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/dao/EmployeeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/dao/EmployeeDATOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/database/DBConnectionUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/filter/EncodingFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/src/servlet/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/web/views/employee-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Database/web/welcome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/Database.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/web/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/src/servlet/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/src/servlet/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/web/views/employee-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/web/views/employee-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/web/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/web/welcome.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
