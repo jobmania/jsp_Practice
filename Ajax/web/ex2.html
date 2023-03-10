@@ -5,7 +5,7 @@
     <title>AJAX 연습</title>
 </head>
 <body>
-    <h1> 1부터 빈칸에 적은 숫자까지 총합은???</h1>
+    <h1> 구구단 ㅅ???</h1>
     <input id=input type="text">
     <button onclick="sendServer()">계산하기</button>
     <div id="output"></div>
@@ -18,7 +18,7 @@
 
         function sendServer(){
             let v = input.value; // 입력값
-            let url = "sum.jsp?val="+v;  // AJAX 요청 주소
+            let url = "gugu.jsp?val="+v;  // AJAX 요청 주소
             request.open('GET', url, true);
             request.send();// 보내기!
 
@@ -27,7 +27,9 @@
                 // 응답에 대해 준비가 됬때
             if(request.readyState===4 && request.status ==200){
                 let val = request.responseText;
-                console.log(val)
+                output.innerText = val; // 태그 미포함
+                output.innerHTML = val; // 태그 포함
+
             }
             }
 

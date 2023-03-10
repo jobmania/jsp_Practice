@@ -1,2 +1,7 @@
-package servlet;public class servlet {
+package servlet;
+
+import javax.servlet.http.HttpServlet;
+
+
+public class servlet extends HttpServlet {
 }

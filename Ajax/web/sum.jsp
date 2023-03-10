@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 2023-03-10
-  Time: 오후 12:31
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+
+<%
+  int n = Integer.parseInt(request.getParameter("val"));
+  int total = 0;
+  for(int i = 1; i<=n; i++){
+    total =total+ i;
+  }
+  out.println(total);
+%>

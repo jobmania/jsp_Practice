@@ -3,9 +3,9 @@
 
 <%
   int n = Integer.parseInt(request.getParameter("val"));
-  int total = 0;
-  for(int i = 1; i<=n; i++){
-    total =total+ i;
+
+
+  for(int i = 1; i<=9; i++){
+      out.println("<p> "+ i*n+ "</p>");
   }
-  out.println(total);
 %>
