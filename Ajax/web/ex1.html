@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX 연습</title>
+</head>
+<body>
+    <h1> 1부터 빈칸에 적은 숫자까지 총합은???</h1>
+    <input type="text">
+    <button onclick="sendServer()">계산하기</button>
+    <div id="output"></div>
+
+    <script>
+        // 버튼을 누르면 ajax로 서버주소로 http 요청하기( 비동기: 백그라운드 실행)
+        const input = document.querySelector('input');
+        const output = document.getElementById('output');
+        const request = new XMLHttpRequest(); /// ajax 객체 생성
+
+        function sendServer(){
+            let v = input.value; // 입력값
+            let url = "sum.jsp?val="+v;  // AJAX 요청 주소
+            request.open('GET', url, true);
+            request.send();// 보내기!
+
+            request.onreadystatechange = function (){
+                // 서버에서 돌아오는데이터 수집
+                // 응답에 대해 준비가 됬때
+            if(request.readyState===4 && request.status ==200){
+                let val = request.responseText;
+                console.log(val)
+            }
+            }
+
+
+
+        }
+
+    </script>
+</body>
+</html>
