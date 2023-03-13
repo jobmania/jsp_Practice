@@ -20,16 +20,16 @@
         PreparedStatement ps=con.prepareStatement("insert into COMMENT(comment,email) values(?,?)");
         ps.setString(1,comment);
         ps.setString(2,email);
-        int i=ps.executeUpdate();
+        int i=ps.executeUpdate(); // 입력, 수정, 삭제시 >> rs int로 리턴이됨 ( 1 개 작업이 되었으면 1 이나옴)
 
         PreparedStatement ps2=con.prepareStatement("select * from COMMENT order by id desc");
-        ResultSet rs=ps2.executeQuery();
+        ResultSet rs=ps2.executeQuery(); // 조회시 >> rs 있음.
 
         out.print("<hr/><h2>Comments:</h2>");
         while(rs.next()){
           out.print("<div class='box'>");
-          out.print("<p>"+rs.getString(2)+"</p>");
-          out.print("<p><strong>글쓴이 : "+rs.getString(3)+"</strong></p>");
+          out.print("<p>"+rs.getString("comment")+"</p>"); ///getString(2)
+          out.print("<p><strong>글쓴이 : "+rs.getString("email")+"</strong></p>");
           out.print("</div>");
         }
       }else {
