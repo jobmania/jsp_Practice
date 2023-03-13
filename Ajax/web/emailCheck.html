@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax로 이메일 체크하기</title>
+</head>
+<body>
+<h1> 회원가입시 이메일 체크하기. </h1>
+<form name="myform">
+    <input type="email" name="email" placeholder="이메일 입력"/>
+    <input type="button" onclick="sendServer()" value="중복체크"/>
+    <div id="output"></div>
+
+
+</form>
+</body>
+<script>
+    <!--    인풋이 2개므로 타입으로 "email" 설정-->
+    const input = document.querySelector('input[type="email"]');
+    const output = document.getElementById('output');
+    const request = new XMLHttpRequest; //ajax 객체 생성
+
+    function sendServer() {
+        //이메일을 jsp로 보내 중복체크
+        let email = input.value;
+        let url = "emailCheck.jsp?email=" + email;
+
+        // 서버로 보내기 .. get 방식.
+        request.open('GET', url, true); // http방식, 주소
+        request.send();  // 서버로 비동기 전송
+        request.onreadystatechange = getInfo;
+
+    }
+
+    function getInfo() { //email 중복체크후 결과
+            // 200 코드 및 서버준비 ok(4)
+        if (request.readyState == 4 && request.status == 200) {
+            let text = request.responseText;
+            console.log(text)
+            output.textContent = text;
+
+        }
+    }
+
+</script>
+</html>
