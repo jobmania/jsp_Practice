@@ -10,10 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="72af2401-246b-45bc-8e76-2aaa5ff74b88" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Database/src/servlet/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/src/servlet/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/web/views/employee-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/web/views/employee-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/web/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/web/welcome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/.idea/artifacts/teampjt_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/src/servlet/ConnectionDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/src/servlet/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/src/servlet/Servlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/teampjt.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../teampjt/web/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +190,7 @@
       <workItem from="1678251470562" duration="117000" />
       <workItem from="1678329396676" duration="41000" />
       <workItem from="1678329843764" duration="1545000" />
+      <workItem from="1678860532546" duration="27000" />
     </task>
     <servers />
   </component>
