@@ -13,7 +13,7 @@ public class LoginRequiredFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        // 요청시 로그인 상태가 아니면 login.do로 다시보내버린다.
+        // 요청시 로그인 상태가 아니면 로그인화면으로 다시보내버린다.
         if(request.getSession().getAttribute("username") != null){
             filterChain.doFilter(servletRequest,servletResponse);
         }else {

@@ -19,7 +19,7 @@
         <p>
             <font color="red">${error}</font>
         </p>
-        Name: <input class="form-control" type="email" name="username"/> <br>
+        Email: <input class="form-control" type="email" name="username"/> <br>
         Password:<input class="form-control" type="password" name="password"/>
         CheckPassword:<input class="form-control" type="password" name="checkpassword"/>
 
