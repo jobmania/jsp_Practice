@@ -1,0 +1,33 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 2023-03-06
+  Time: 오전 9:38
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <a href="https://naver.com" class="navbar-brand">🎯</a>
+
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/login.do">Home</a></li>
+      <li><a href="/list-todo.do">Todos</a></li>
+      <li><a href="https://velog.io">Blog</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <%
+        if (session.getAttribute("name") == null) {
+      %>
+      <li><a href="login.do">로그인</a></li>
+      <%
+      } else {
+      %>
+      <li><a href="logout.do">로그아웃</a></li>
+      <%
+        }
+      %>
+    </ul>
+  </div>
+</nav>
