@@ -15,11 +15,14 @@
 </head>
 <body>
 <h1> 음식 추천 정보 </h1>
+<a class="btn btn-primary" href="home"> 홈으로 </a>
 <div class="container" style="width:70%">
 
   <table class="table table-striped">
     <img src="images/homeimg.jpg" alt="지도 이미지">
-    <img src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=300&h=300&center=127.1054221,37.3591614&level=16&X-NCP-APIGW-API-KEY-ID={ywu2wqjm9z}">
+    ${findAddress.x}
+    ${findAddress.y}
+    <img src="https://naveropenapi.apigw.ntruss.com/map-static/v2/raster-cors?w=300&h=300&center=${findAddress.x},${findAddress.y}&level=16&X-NCP-APIGW-API-KEY-ID={ywu2wqjm9z}">
     <br>
     <caption> 음식점 리스트 </caption>
     <thead>
@@ -41,6 +44,7 @@
     </c:forEach>
     </tbody>
   </table>
+
 
 </div>
 
