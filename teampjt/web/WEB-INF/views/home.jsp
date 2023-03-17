@@ -29,31 +29,9 @@
     <br>
     <img src="images/homeimg.jpg" alt="지도 이미지">
     <br>
-    <h2> 리스트</h2>
-    <table class="table table-striped">
-        <caption> 음식점 리스트 </caption>
-        <thead>
-        <tr>
-            <th>음식점 이름 </th>
-            <th> 주소(클릭 시 지도) </th>
-            <th> 음식점 전화번호</th>
-            <th> 메인 요리 </th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${diners}" var="diner">
-            <tr>
-                <td>${diner.name}</td>
-                <td> <a class="btn btn-primary" href="map?address=${diner.address}">${diner.address}</a> </td>
-                <td>${diner.phone_num}</td>
-                <td>${diner.dish}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-
-
-    
+    <td> <a class="btn btn-primary" href="diner">음식 </a> </td>
+    <td> <a class="btn btn-primary" href="map">예시 2</a> </td>
+    <td> <a class="btn btn-primary" href="map">예시 3</a> </td>
 </div>
 
 </body>

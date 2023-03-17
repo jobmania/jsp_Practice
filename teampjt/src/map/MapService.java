@@ -1,5 +1,7 @@
 package map;
 
+import com.google.gson.*;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,22 +11,22 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.net.http.HttpHeaders;
+import java.util.List;
 
 public class MapService {
-    private int x = 0;
-    private int y = 0;
+    private String x;
+    private String y;
 
 
 
     // 지오 코드 좌표값 들고오기
-    public void getMap(String address) throws IOException {
+    public Addresses getMap(String address) throws IOException {
 
         //네이버 api 지오코딩을 이용해 주소를 좌표값으로 변환.
         StringBuilder urlBuilder = new StringBuilder("https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query="); // URL
         urlBuilder.append(URLEncoder.encode(address, "UTF-8"));  // 주소를 인코딩
 
 
-        
         String set = "129.0756416,35.1795543"; // 현재 위치
         urlBuilder.append("&coordinate="); // 부산 위도 경도..
         urlBuilder.append(URLEncoder.encode(set, "UTF-8"));
@@ -47,16 +49,18 @@ public class MapService {
 
         System.out.println(result);
 
-        //지오코드 좌표값으로 이미지 들고오기
-        getImage(x, y);
+        // Gson 객체 생성
+        Gson gson = new Gson();
+        Map map = gson.fromJson(result, Map.class);
 
+        for (Addresses addresses : map.getAddresses()) {
+            x = addresses.getX();
+            y = addresses.getY();
+        }
 
-
-
+        return new Addresses(x, y);
     }
 
-    private void getImage(int x, int y) {
-    }
 
 
 }

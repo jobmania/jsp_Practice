@@ -1,5 +1,7 @@
 package servlet;
 
+import diner.DinerService;
+import map.Addresses;
 import map.MapService;
 
 import javax.servlet.ServletException;
@@ -20,11 +22,15 @@ import java.util.Map;
 public class MapServlet extends HttpServlet {
 
     MapService mapService = new MapService();
+    DinerService dinerService = new DinerService();
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String address = request.getParameter("address");
-        mapService.getMap(address);
+
+        request.setAttribute("diners", dinerService.getDiners());
+        request.setAttribute("findAddress", mapService.getMap(address));
+        request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
 
     }
 }
