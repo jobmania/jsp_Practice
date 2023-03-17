@@ -8,20 +8,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <title>Title</title>
 </head>
 <body>
-<h1> 홈화면</h1>
-<h2> 리스트</h2>
+<div class="container" style="width:50%">
 
-${username} hello!
-<%
-    if (request.getSession().getAttribute("username")==null) {
-        out.write("<a href=\"login\">로그인</a>");
-    }else {
-        out.write("<a href=\"logout\">로그아웃</a>");
-    }
-%>
+    <h1> 홈화면</h1>
+    <h2> 리스트</h2>
+
+
+    ${username} hello!
+    <%
+        if (request.getSession().getAttribute("username") == null) {
+            out.write("<a href=\"login\">로그인</a>");
+        } else {
+            out.write("<a href=\"logout\">로그아웃</a>");
+        }
+    %>
+
+    
+</div>
 
 </body>
 </html>

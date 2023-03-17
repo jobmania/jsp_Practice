@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>회원가입 창 </title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
 <h1> 회원가입 !! </h1>

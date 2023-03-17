@@ -23,10 +23,16 @@ public class SignUpServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String checkPassword = request.getParameter("checkpassword");
-        String ok = userService.saveUser(username, password, checkPassword);
+        String check = userService.saveUser(username, password, checkPassword);
 
-        request.setAttribute("ok",ok);
-        request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
+        if(check.equals("ok")){ // 회원 가입 성공시
+            request.setAttribute("ok",check);
+            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request,response);
+        }else {
+            request.setAttribute("error",check);
+            request.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(request,response);
+        }
+
 
     }
 }

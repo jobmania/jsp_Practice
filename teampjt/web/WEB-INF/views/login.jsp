@@ -3,6 +3,8 @@
 <html>
   <head>
     <title>로그인 페이지</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
 
@@ -11,14 +13,16 @@
     <form action="login" method="post">
       <p>
         <font color="red">${error}</font>
-        <font color="red">${ok}</font>
+        <font color="black">${ok==null?"":"회원가입완료"}</font>
+
       </p>
       Name: <input class="form-control" type="email" name="username"/> <br>
       Password:<input class="form-control" type="password" name="password"/>
       <input class="form-control" type="submit" value="로그인">
     </form>
+    <a href="signup">회원가입</a>
   </div>
-  <a href="signup">회원가입</a>
+
 
   </body>
 </html>

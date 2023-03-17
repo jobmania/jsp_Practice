@@ -74,7 +74,7 @@ public class UserService {
                 pstmt2.setDate(3, Date.valueOf(LocalDate.now()));
                 pstmt2.executeUpdate();
                 dbConnect.closeAll(rs, pstmt2, con);
-                return "회원가입 ok";
+                return "ok";
             }
         } catch (SQLException e) {
             return "에러 발생";

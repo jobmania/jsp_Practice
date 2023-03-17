@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
 
         if(isValidUser){
             request.getSession().setAttribute("username",username);
+            request.getSession().setMaxInactiveInterval(600);// 세션지속시간 600초
             response.sendRedirect("home");
         }else {
             request.setAttribute("error","Invalid Id Or Pw (아이디 or 비번 잘못!)");
