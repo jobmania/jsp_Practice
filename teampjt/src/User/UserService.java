@@ -3,27 +3,11 @@ package User;
 import connectdb.ConnectionDB;
 
 import java.sql.*;
-import java.time.Clock;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class UserService {
 
     ConnectionDB dbConnect = new ConnectionDB();
-
-
-
-    public String findUser() {
-
-
-        Connection con = dbConnect.getCon();
-        PreparedStatement pstmt = null;
-        ResultSet rs = null;
-
-
-        dbConnect.closeAll(rs, pstmt, con);
-        return "ok";
-    }
 
     public String saveUser(String email, String password, String checkPassword) {
 

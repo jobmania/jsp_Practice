@@ -12,11 +12,11 @@
 </head>
 <body>
 <!-- 정적 include : 미리 컴파일해둠 , 어쩌다 한번 바꾸는 파일 -->
-<%@ include file="copyright.txt" %>
+<%@ include file="../copyright.txt" %>
 <br>
 <br>
 <%--동적 include : 페이지를 요청할때마다 새로고침 , 자주 수정하는 파일 --%>
-<jsp:include page="update.txt" />
+<jsp:include page="../update.txt" />
 <h1> 구구단!</h1>
 <jsp:include page="gugudan.jsp" />
 
