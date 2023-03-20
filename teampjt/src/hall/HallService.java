@@ -26,11 +26,11 @@ public class HallService {
             rs = pstmt.executeQuery();
 
             while (rs.next()){
-            	Integer hallID = rs.getInt("hallID");
+            	Integer hallID = rs.getInt("id");
                 String city = rs.getString("city");
                 String country = rs.getString("country");
                 String address = rs.getString("address");
-                String hallName = rs.getString("hallName");
+                String hallName = rs.getString("hallname");
                 String openDate = rs.getString("openDate");
                 String num = rs.getString("num");
                 Hall hall =new Hall(hallID, city,country,address,hallName,openDate,num);
