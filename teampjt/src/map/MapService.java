@@ -2,16 +2,17 @@ package map;
 
 import com.google.gson.*;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.awt.image.RenderedImage;
+import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.net.http.HttpHeaders;
 import java.util.List;
+import java.util.UUID;
 
 public class MapService {
     private String x;
@@ -58,9 +59,37 @@ public class MapService {
             y = addresses.getY();
         }
 
-        return new Addresses(x, y);
+        return map.getAddresses().get(0);
+
     }
 
+    public Image getMapImg(String x, String y, String address) throws IOException {
+
+        String pos = URLEncoder.encode(x + " " + y, "UTF-8");  // 인코딩 하는 이유, 한칸 띄움이 있음!
+        String setUrl = "https://naveropenapi.apigw.ntruss.com/map-static/v2/raster?w=600&h=400&markers=type:t|size:mid|pos:"+pos+"|label:"+URLEncoder.encode(address, "UTF-8");
+
+        URL url = new URL(setUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();  // http 연결
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("X-NCP-APIGW-API-KEY-ID","ywu2wqjm9z");
+        conn.setRequestProperty("X-NCP-APIGW-API-KEY","hIAqxfsbM2UVHCBj40JJLJWqfT1MO315FTJl4TQx");
+
+
+
+        int responseCode = conn.getResponseCode();
+        if (responseCode == 200) { //OK
+            InputStream is = conn.getInputStream();
+            InputStream in = conn.getInputStream();
+            Image image = ImageIO.read(is);
+
+
+            is.close();
+            conn.disconnect();
+            return image;
+        }
+
+        return null; // error 이미지 송출.
+    }
 
 
 }

@@ -4,6 +4,8 @@ public class User {
     private String email; //
     private String password;  // 복호화 인코딩
 
+    // 추가 항목들 설정 가능
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
