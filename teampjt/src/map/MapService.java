@@ -48,8 +48,6 @@ public class MapService {
         br.close();
         conn.disconnect();
 
-        System.out.println(result);
-
         // Gson 객체 생성
         Gson gson = new Gson();
         Map map = gson.fromJson(result, Map.class);

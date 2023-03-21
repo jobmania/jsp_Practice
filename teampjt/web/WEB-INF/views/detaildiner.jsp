@@ -20,30 +20,32 @@
 <a class="btn btn-primary" href="home"> 홈으로 </a>
 <div class="container" style="width:70%">
 
+    <h2> 위치 정보 </h2>
+    <img src="data:image/png;base64,${mapImage}" alt="지도 이미지">
     <table class="table table-striped">
-        <img src="images/homeimg.jpg" alt="지도 이미지"><br>
-        <img src="data:image/png;base64,${mapImage}" alt="지도 이미지">
-        위치 : ${address.x} ${address.y}
+
+        <h2> 리뷰리스트</h2>
+
+
+
         <br>
-        <caption> 음식점 리스트 </caption>
         <thead>
         <tr>
             <th>음식점 이름 </th>
-            <th> 주소(클릭 시 지도) </th>
+            <th> 주소 </th>
             <th> 음식점 전화번호</th>
             <th> 메인 요리 </th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${diners}" var="diner">
+
             <tr>
                 <td>${diner.name}</td>
                 <td>${diner.address}</td>
                 <td>${diner.phone_num}</td>
                 <td>${diner.dish}</td>
-                <td> <a class="btn btn-primary" href="map?address=${diner.address}">상세 보기</a> </td>
             </tr>
-        </c:forEach>
+
         </tbody>
     </table>
 

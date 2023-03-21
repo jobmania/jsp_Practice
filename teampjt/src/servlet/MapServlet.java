@@ -47,8 +47,8 @@ public class MapServlet extends HttpServlet {
         String base64Encoded = Base64.getEncoder().encodeToString(imageInByte);
 
 
-        request.setAttribute("diners", dinerService.getDiners());
-        request.setAttribute("address", findAddress);
+        request.setAttribute("diner", dinerService.getOneDiner(address));
+
         request.setAttribute("mapImage",base64Encoded);
 
 

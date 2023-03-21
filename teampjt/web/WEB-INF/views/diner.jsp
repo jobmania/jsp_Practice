@@ -21,15 +21,14 @@
 <div class="container" style="width:70%">
 
   <table class="table table-striped">
-    <img src="images/homeimg.jpg" alt="지도 이미지"><br>
-    <img src="data:image/png;base64,${mapImage}" alt="지도 이미지">
-    위치 : ${address.x} ${address.y}
+    <img src="images/homeimg.jpg" alt="식당 이미지"><br>
+
     <br>
     <caption> 음식점 리스트 </caption>
     <thead>
     <tr>
       <th>음식점 이름 </th>
-      <th> 주소(클릭 시 지도) </th>
+      <th> 주소 </th>
       <th> 음식점 전화번호</th>
       <th> 메인 요리 </th>
     </tr>

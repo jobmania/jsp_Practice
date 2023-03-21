@@ -6,6 +6,10 @@ public class Diner {
     private String phone_num;
     private String dish;
 
+    public Diner() {
+
+    }
+
     public Diner(String name, String address, String phone_num, String dish) {
         this.name = name;
         this.address = address;
