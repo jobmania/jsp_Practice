@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-//@WebFilter({"*secure"})
+@WebFilter({"/check/*"})
 public class LoginRequiredFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -19,6 +19,7 @@ public class LoginRequiredFilter implements Filter {
         }else {
             request.setAttribute("error","로그인 해야지 작업 가능함");
             request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(servletRequest,servletResponse);
+
         }
 
     }
