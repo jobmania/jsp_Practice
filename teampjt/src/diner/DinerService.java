@@ -83,8 +83,6 @@ public class DinerService {
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1,"%"+searchKeyword+"%");
 
-            System.out.println(searchKeyword);
-            System.out.println(pstmt);
 
             writeDinerList(diners, con, pstmt);
         } catch (SQLException e) {

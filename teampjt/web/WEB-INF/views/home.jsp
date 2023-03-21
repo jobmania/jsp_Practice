@@ -17,8 +17,8 @@
 <div class="container" style="width:80%">
 
     <h1> 홈화면</h1>
-
-    ${username} hello! <br>
+    <h2>  ${username} hello! </h2>
+    <br>
     <%
         if (request.getSession().getAttribute("username") == null) {
             out.write("<a href=\"login\">로그인</a>");
