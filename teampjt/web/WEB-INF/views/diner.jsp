@@ -18,10 +18,30 @@
 <body>
 <h1> 음식 추천 정보 </h1>
 <a class="btn btn-primary" href="home"> 홈으로 </a>
+<img src="images/homeimg.jpg" alt="식당 이미지"><br>
 <div class="container" style="width:70%">
+  <form action="/diner" method="post">
+     <span class="btn_img itx_wrp">
+    <label for="bd_srch_btm_itx_">검색</label>
+     <input type="text" name="search_keyword" id="bd_srch_btm_itx_" class="bd_srch_btm_itx srch_itx" value="">
+  </span>
+
+    <span class="btn_img select">	<select name="search_target">
+    <option value="name">이름</option>
+    <option value="address">주소</option>
+    <option value="dish">요리</option>
+  </select>	</span>
+
+
+    <button type="submit" class="ico_16px search">Search</button>
+  </form>
+
+
+
+
 
   <table class="table table-striped">
-    <img src="images/homeimg.jpg" alt="식당 이미지"><br>
+
 
     <br>
     <caption> 음식점 리스트 </caption>

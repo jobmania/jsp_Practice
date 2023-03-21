@@ -23,17 +23,7 @@ public class DinerService {
             ResultSet rs = null;
 
             pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-
-            while (rs.next()){
-                String name = rs.getString("name");
-                String address = rs.getString("address");
-                String phone_num = rs.getString("phone_num");
-                String dish = rs.getString("dish");
-                Diner diner =new Diner(name,address,phone_num,dish);
-                diners.add(diner);
-            }
-            dbConnect.closeAll(rs, pstmt, con);
+            writeDinerList(diners, con, pstmt);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -71,4 +61,51 @@ public class DinerService {
         return diner;
     }
 
+    public List<Diner> getSpecificDiners(String searchKeyword, String searchTarget) {
+        List<Diner> diners = new ArrayList<>();
+
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "";
+
+            if(searchTarget.equals("name")){
+                sql = "SELECT * FROM DINER WHERE NAME LIKE ?";
+            } else if (searchTarget.equals("address")) {
+                sql = "SELECT * FROM DINER WHERE ADDRESS LIKE ?";
+            } else if (searchTarget.equals("dish")) {
+                sql = "SELECT * FROM DINER WHERE DISH LIKE ?";
+            }
+
+
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,"%"+searchKeyword+"%");
+
+            System.out.println(searchKeyword);
+            System.out.println(pstmt);
+
+            writeDinerList(diners, con, pstmt);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return diners;
+
+    }
+
+    private void writeDinerList(List<Diner> diners, Connection con, PreparedStatement pstmt) throws SQLException {
+        ResultSet rs;
+        rs = pstmt.executeQuery();
+
+        while (rs.next()){
+            String name = rs.getString("name");
+            String address = rs.getString("address");
+            String phone_num = rs.getString("phone_num");
+            String dish = rs.getString("dish");
+            Diner diner =new Diner(name,address,phone_num,dish);
+            diners.add(diner);
+        }
+        dbConnect.closeAll(rs, pstmt, con);
+    }
 }

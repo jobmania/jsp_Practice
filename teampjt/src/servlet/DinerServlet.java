@@ -20,6 +20,9 @@ public class DinerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String searchKeyword = request.getParameter("search_keyword");
+        String searchTarget = request.getParameter("search_target");
+        request.setAttribute("diners", dinerService.getSpecificDiners(searchKeyword,searchTarget));
+        request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
     }
 }
