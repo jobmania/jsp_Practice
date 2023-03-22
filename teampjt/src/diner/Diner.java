@@ -1,6 +1,7 @@
 package diner;
 
 public class Diner {
+    private int id;
     private String name;
     private String address;
     private String phone_num;
@@ -10,11 +11,20 @@ public class Diner {
 
     }
 
-    public Diner(String name, String address, String phone_num, String dish) {
+    public Diner(int id, String name, String address, String phone_num, String dish) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.phone_num = phone_num;
         this.dish = dish;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

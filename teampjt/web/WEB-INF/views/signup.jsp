@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1> 회원가입 !! </h1>
-
+<%-- 추가적으로 ajax 구현 --%>
 
 <div class="container" style="width:50%">
     <form action="signup" method="post">

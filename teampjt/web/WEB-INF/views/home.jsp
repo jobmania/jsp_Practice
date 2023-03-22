@@ -29,7 +29,7 @@
     <br>
     <img src="images/homeimg.jpg" alt="지도 이미지">
     <br>
-    <td> <a class="btn btn-primary" href="diner">음식 </a> </td>
+    <td> <a class="btn btn-primary" href="diner?page=1">음식 </a> </td>
     <td> <a class="btn btn-primary" href="map">예시 2</a> </td>
     <td> <a class="btn btn-primary" href="map">예시 3</a> </td>
 </div>
