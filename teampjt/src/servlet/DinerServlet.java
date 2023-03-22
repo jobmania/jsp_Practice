@@ -24,7 +24,7 @@ public class DinerServlet extends HttpServlet {
 
 
 
-        int totalPages = dinerService.getCount();
+        int totalCount = dinerService.getCount();
         List<Diner> pageDiners = dinerService.getPageDiners(page);
 
 //        List<Diner> pageDiners = new ArrayList<>();
@@ -44,6 +44,10 @@ public class DinerServlet extends HttpServlet {
 //        String jsonData = gson.toJson(diners);
 //        request.setAttribute("data",jsonData);
 
+        // 총 페이지 갯수 !
+        int totalPages = (int) Math.ceil((double) totalCount / 10);
+
+        System.out.println(totalPages);
         request.setAttribute("totalPages",totalPages);
         request.setAttribute("diners", pageDiners);
         request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
@@ -58,17 +62,23 @@ public class DinerServlet extends HttpServlet {
         int page = Integer.parseInt(request.getParameter("page"));
         page -= 1; // first page =  0
 
-        
-        List<Diner> diners = dinerService.getSpecificDiners(searchKeyword, searchTarget);
+        int totalSearchCount = dinerService.getSearchCount(searchKeyword,searchTarget);
+        List<Diner> diners = dinerService.getSpecificDiners(searchKeyword, searchTarget,page);
 
 
 
-        Gson gson = new Gson();
-        String jsonData = gson.toJson(diners);
+//        Gson gson = new Gson();
+//        String jsonData = gson.toJson(diners);
+//        request.setAttribute("data",jsonData);
+// 총 페이지 갯수
 
+        int searchTotalPages = (int) Math.ceil((double) totalSearchCount / 10);
 
+        request.setAttribute("searchKeyword", searchKeyword);
+        request.setAttribute("searchTarget", searchTarget);
+        request.setAttribute("searchTotalPages",searchTotalPages);
         request.setAttribute("diners", diners);
-        request.setAttribute("data",jsonData);
+        request.setAttribute("currentPage", page);
         request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
 
     }

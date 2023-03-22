@@ -37,6 +37,39 @@ public class DinerService {
         return count;
     }
 
+    public int getSearchCount(String searchKeyword, String searchTarget) {
+        int count = 0;
+
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "";
+
+            if(searchTarget.equals("name")){
+                sql = "SELECT COUNT(*) FROM DINER WHERE NAME LIKE ? ";
+            } else if (searchTarget.equals("address")) {
+                sql = "SELECT COUNT(*) FROM DINER WHERE ADDRESS LIKE ?";
+            } else if (searchTarget.equals("dish")) {
+                sql = "SELECT COUNT(*) FROM DINER WHERE DISH LIKE ?";
+            }
+
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,"%"+searchKeyword+"%");
+
+            while (rs.next()){
+                count =  rs.getInt(1);
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return count;
+    }
+
     public List<Diner> getDiners() { // 다 들고오기
         List<Diner> diners = new ArrayList<>();
 
@@ -106,22 +139,20 @@ public class DinerService {
         return diner;
     }
 
-    public List<Diner> getSpecificDiners(String searchKeyword, String searchTarget) {
+    public List<Diner> getSpecificDiners(String searchKeyword, String searchTarget, int page) {
         List<Diner> diners = new ArrayList<>();
 
-        System.out.println(searchKeyword);
-        System.out.println(searchTarget);
 
         try {
             Connection con = dbConnect.getCon();
             String sql = "";
 
             if(searchTarget.equals("name")){
-                sql = "SELECT * FROM DINER WHERE NAME LIKE ?";
+                sql = "SELECT * FROM DINER WHERE NAME LIKE ? LIMIT ?,10";
             } else if (searchTarget.equals("address")) {
-                sql = "SELECT * FROM DINER WHERE ADDRESS LIKE ?";
+                sql = "SELECT * FROM DINER WHERE ADDRESS LIKE ? LIMIT ?,10";
             } else if (searchTarget.equals("dish")) {
-                sql = "SELECT * FROM DINER WHERE DISH LIKE ?";
+                sql = "SELECT * FROM DINER WHERE DISH LIKE ? LIMIT ?,10";
             }
 
 
@@ -130,6 +161,7 @@ public class DinerService {
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1,"%"+searchKeyword+"%");
+            pstmt.setInt(2,page*10);
 
 
             writeDinerList(diners, con, pstmt);

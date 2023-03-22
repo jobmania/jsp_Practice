@@ -19,7 +19,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 
-
 </head>
 <body>
 <h1> 음식 추천 정보 </h1>
@@ -27,28 +26,26 @@
 <img src="images/homeimg.jpg" alt="식당 이미지"><br>
 <div class="container" style="width:70%">
 
-<%--   검색창   --%>
+    <%--   검색창   --%>
     <form id="searchBar" action="/diner" method="post">
     <span class="btn_img itx_wrp">
         <label for="search_keyword">검색</label>
         <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="">
     </span>
-    <span class="btn_img select">
-        <select id ="search_target" name="search_target">
+        <span class="btn_img select">
+        <select id="search_target" name="search_target">
         <option value="name">이름</option>
         <option value="address">주소</option>
         <option value="dish">요리</option>
         </select>
     </span>
         <button type="submit" class="ico_16px search">Search</button>
-<%--        <button type="button" class="ico_16px search" onclick="searchData()">Search2</button>--%>
     </form>
 
-<%--    ajax 검색창 --%>
+    <%--    ajax 검색창 --%>
 
 
-
-<%-- 테이블 --%>
+    <%-- 테이블 --%>
     <table class="table table-striped" , id="dinerTable">
         <br>
         <caption></caption>
@@ -82,7 +79,15 @@
         </tbody>
     </table>
 
-<%--    페이징 처리 --%>
+
+        <!-- 페이징 처리 -->
+    <div>
+        <% double totalPages = (int) request.getAttribute("totalPages"); %>
+        <% for (int i = 0; i < totalPages; i++) {%>
+        <a class="btn btn-primary" href="diner?page=<%= i+1 %>">
+            <%= i+1 %> </a>
+        <% } %>
+    </div>
 
 
 </div>
