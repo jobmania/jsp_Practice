@@ -22,13 +22,13 @@
 </head>
 <body>
 <h1> 음식 검색 정보 </h1>
-<a class="btn btn-primary" href="home"> 홈으로 </a>
-<a class="btn btn-primary" href="diner?page=1"> 음식 리스트로 돌아가기 </a>
-<img src="images/homeimg.jpg" alt="식당 이미지"><br>
+<a class="btn btn-primary" href="/home"> 홈으로 </a>
+<a class="btn btn-primary" href="/diner?page=1"> 음식 리스트로 돌아가기 </a>
+<img src="/images/homeimg.jpg" alt="식당 이미지"><br>
 <div class="container" style="width:70%">
 
     <%--   검색창   --%>
-    <form id="searchBar" action="/diner" method="post">
+    <form id="searchBar" action="/diner/search" method="get">
         <span class="btn_img itx_wrp">
             <label for="search_keyword">검색</label>
             <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="">
@@ -41,8 +41,7 @@
             </select>
         </span>
         <span>
-             <%-- 페이지 1 값 보내기 --%>
-           <input type="hidden" name="page" value="1">
+       <input type="hidden" name="page" value="1"> <%-- 페이지 1 값 보내기 --%>
         </span>
         <button type="submit" class="ico_16px search">Search</button>
     </form>
@@ -78,7 +77,7 @@
                 <td>${diner.address}</td>
                 <td>${diner.phone_num}</td>
                 <td>${diner.dish}</td>
-                <td><a class="btn btn-primary" href="map?address=${diner.address}">상세 보기</a></td>
+                <td><a class="btn btn-primary" href="/map?address=${diner.address}">상세 보기</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -86,14 +85,14 @@
 
 
     <!-- 페이징 처리 -->
+
     <div>
         <% double totalPages = (int) request.getAttribute("totalPages");
             String search_keyword = (String) request.getAttribute("searchKeyword");
             String search_target = (String) request.getAttribute("searchTarget");%>
         <% for (int i = 0; i < totalPages; i++) {%>
-        <a class="btn btn-primary" href="diner?page=<%= i+1 %>
-        &search_keyword=<%=search_keyword%>&search_target=<%=search_target%>">
-        <%= i+1 %> </a>
+        <a class="btn btn-primary" href="/diner/search?page=<%= i+1 %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>">
+            <%= i+1 %> </a>
         <% } %>
     </div>
 

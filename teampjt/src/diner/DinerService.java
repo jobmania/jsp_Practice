@@ -57,6 +57,7 @@ public class DinerService {
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1,"%"+searchKeyword+"%");
+            rs = pstmt.executeQuery();
 
             while (rs.next()){
                 count =  rs.getInt(1);

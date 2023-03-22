@@ -22,12 +22,12 @@
 </head>
 <body>
 <h1> 음식 추천 정보 </h1>
-<a class="btn btn-primary" href="home"> 홈으로 </a>
-<img src="images/homeimg.jpg" alt="식당 이미지"><br>
+<a class="btn btn-primary" href="/home"> 홈으로 </a>
+<img src="/images/homeimg.jpg" alt="식당 이미지"><br>
 <div class="container" style="width:70%">
 
     <%--   검색창   --%>
-    <form id="searchBar" action="/diner" method="post">
+    <form id="searchBar" action="/diner/search" method="get">
         <span class="btn_img itx_wrp">
             <label for="search_keyword">검색</label>
             <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="">
@@ -40,7 +40,7 @@
             </select>
         </span>
         <span>
-
+ <input type="hidden" name="page" value="1"> <%-- 페이지 1 값 보내기 --%>
         </span>
         <button type="submit" class="ico_16px search">Search</button>
     </form>
@@ -87,7 +87,7 @@
     <div>
         <% double totalPages = (int) request.getAttribute("totalPages"); %>
         <% for (int i = 0; i < totalPages; i++) {%>
-        <a class="btn btn-primary" href="diner?page=<%= i+1 %>">
+        <a class="btn btn-primary" href="/diner?page=<%= i+1 %>">
             <%= i+1 %> </a>
         <% } %>
     </div>
