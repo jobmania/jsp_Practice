@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: admin
-  Date: 2023-03-17
-  Time: 오후 2:37
+  Date: 2023-03-22
+  Time: 오후 3:41
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,8 +21,9 @@
 
 </head>
 <body>
-<h1> 음식 추천 정보 </h1>
+<h1> 음식 검색 정보 </h1>
 <a class="btn btn-primary" href="home"> 홈으로 </a>
+<a class="btn btn-primary" href="diner?page=1"> 음식 리스트로 돌아가기 </a>
 <img src="images/homeimg.jpg" alt="식당 이미지"><br>
 <div class="container" style="width:70%">
 
@@ -32,7 +33,7 @@
             <label for="search_keyword">검색</label>
             <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="">
         </span>
-            <span class="btn_img select">
+        <span class="btn_img select">
             <select id="search_target" name="search_target">
             <option value="name">이름</option>
             <option value="address">주소</option>
@@ -40,7 +41,8 @@
             </select>
         </span>
         <span>
-
+             <%-- 페이지 1 값 보내기 --%>
+           <input type="hidden" name="page" value="1">
         </span>
         <button type="submit" class="ico_16px search">Search</button>
     </form>
@@ -83,12 +85,15 @@
     </table>
 
 
-        <!-- 페이징 처리 -->
+    <!-- 페이징 처리 -->
     <div>
-        <% double totalPages = (int) request.getAttribute("totalPages"); %>
+        <% double totalPages = (int) request.getAttribute("totalPages");
+            String search_keyword = (String) request.getAttribute("searchKeyword");
+            String search_target = (String) request.getAttribute("searchTarget");%>
         <% for (int i = 0; i < totalPages; i++) {%>
-        <a class="btn btn-primary" href="diner?page=<%= i+1 %>">
-            <%= i+1 %> </a>
+        <a class="btn btn-primary" href="diner?page=<%= i+1 %>
+        &search_keyword=<%=search_keyword%>&search_target=<%=search_target%>">
+        <%= i+1 %> </a>
         <% } %>
     </div>
 
