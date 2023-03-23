@@ -42,6 +42,7 @@ public class DinerSearchServlet extends HttpServlet {
         request.setAttribute("searchKeyword", searchKeyword);
         request.setAttribute("searchTarget", searchTarget);
         request.setAttribute("totalPages",totalPages);
+        request.setAttribute("sendPageNum",page+1);
         request.setAttribute("diners", diners);
 
         request.getRequestDispatcher("/WEB-INF/views/diner-search.jsp").forward(request,response);

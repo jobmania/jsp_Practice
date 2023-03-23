@@ -49,13 +49,14 @@
     <%--    ajax 검색창 --%>
 
 
+
     <%-- 테이블 --%>
     <table class="table table-striped" , id="dinerTable">
         <br>
         <caption></caption>
         <thead>
         <tr>
-            <th>id</th>
+            <th>번호</th>
             <th>음식점 이름</th>
             <th>주소</th>
             <th>음식점 전화번호</th>
@@ -69,10 +70,10 @@
             </tr>
         </c:if>
 
-        <c:forEach items="${diners}" var="diner">
+        <c:forEach items="${diners}" var="diner" varStatus="status">
 
             <tr>
-                <td>${diner.id} </td>
+                <td>${(sendPageNum - 1) * 10 + status.index + 1}</td>
                 <td>${diner.name}</td>
                 <td>${diner.address}</td>
                 <td>${diner.phone_num}</td>
@@ -82,7 +83,6 @@
         </c:forEach>
         </tbody>
     </table>
-
 
         <!-- 페이징 처리 -->
     <div>

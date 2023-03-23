@@ -21,7 +21,7 @@ public class DinerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String stringPage = request.getParameter("page");
-        int page = 0;
+        int page ;
 
         if(stringPage==null){
             page = Integer.parseInt(this.getInitParameter("page"));
@@ -61,6 +61,7 @@ public class DinerServlet extends HttpServlet {
 
         request.setAttribute("totalPages",totalPages);
         request.setAttribute("diners", pageDiners);
+        request.setAttribute("sendPageNum",page+1);
         request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
 
     }
