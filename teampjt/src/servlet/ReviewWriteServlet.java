@@ -7,13 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "reviewServlet", value = "/review")
-public class ReviewServlet extends HttpServlet {
+@WebServlet(name = "reviewWriteServlet", value = "/review/write")
+public class ReviewWriteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        request.getRequestDispatcher("/WEB-INF/views/review.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/views/review-write.jsp").forward(request,response);
     }
 
     @Override
