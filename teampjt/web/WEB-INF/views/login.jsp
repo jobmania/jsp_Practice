@@ -7,6 +7,7 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
+  <%@ include file="../common/navigation.jspf"%>
 <%-- 추가적으로 ajax 구현--%>
 
   <div class="container" style="width:50%">

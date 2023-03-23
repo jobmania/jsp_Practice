@@ -21,6 +21,7 @@
 
 </head>
 <body>
+<%@ include file="../common/navigation.jspf"%>
 <h1> 음식 추천 정보 </h1>
 <a class="btn btn-primary" href="/home"> 홈으로 </a>
 <img src="/images/homeimg.jpg" alt="식당 이미지"><br>

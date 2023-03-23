@@ -20,6 +20,8 @@ public class DinerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1페이지당 10개.
         int page = Integer.parseInt(request.getParameter("page"));
+
+
         page -= 1; // first page =  0
 
         int totalCount = dinerService.getCount();
@@ -56,32 +58,7 @@ public class DinerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String searchKeyword = request.getParameter("search_keyword");
-//        String searchTarget = request.getParameter("search_target");
-//        // 1페이지당 10개.
-//        int page = Integer.parseInt(request.getParameter("page"));
-//        page -= 1; // first page =  0
-//
-//        int totalSearchCount = dinerService.getSearchCount(searchKeyword,searchTarget);
-//        List<Diner> diners = dinerService.getSpecificDiners(searchKeyword, searchTarget,page);
-//
-//
-///**
-// *   Gson gson = new Gson();
-// *         String jsonData = gson.toJson(diners);
-// *         request.setAttribute("data",jsonData);
-//* */
-//
-//// 총 페이지 갯수
-//
-//        int totalPages = (int) Math.ceil((double) totalSearchCount / 10);
-//
-//        request.setAttribute("searchKeyword", searchKeyword);
-//        request.setAttribute("searchTarget", searchTarget);
-//        request.setAttribute("totalPages",totalPages);
-//        request.setAttribute("diners", diners);
-//
-//        request.getRequestDispatcher("/WEB-INF/views/search-diner.jsp").forward(request,response);
+
 
     }
 }

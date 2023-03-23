@@ -21,6 +21,7 @@
 
 </head>
 <body>
+<%@ include file="../common/navigation.jspf"%>
 <h1> 음식 검색 정보 </h1>
 <a class="btn btn-primary" href="/home"> 홈으로 </a>
 <a class="btn btn-primary" href="/diner?page=1"> 음식 리스트로 돌아가기 </a>

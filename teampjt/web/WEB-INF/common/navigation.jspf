@@ -5,26 +5,26 @@
   Time: 오전 9:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java"   pageEncoding="UTF-8"%>
 <nav class="navbar navbar-default">
   <div class="container">
-    <a href="https://naver.com" class="navbar-brand">🎯</a>
+    <a href="/home" class="navbar-brand">🎯</a>
 
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/login.do">Home</a></li>
-      <li><a href="/list-todo.do">Todos</a></li>
-      <li><a href="https://velog.io">Blog</a></li>
+      <li class="active"><a href="/home">Home</a></li>
+      <li><a href="/diner">음식점게시판</a></li>
+      <li><a href="https://velog.io">리뷰게시판</a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <%
-        if (session.getAttribute("name") == null) {
+        if (session.getAttribute("username") == null) {
       %>
-      <li><a href="login.do">로그인</a></li>
+      <li><a href="/login">로그인</a></li>
       <%
       } else {
       %>
-      <li><a href="logout.do">로그아웃</a></li>
+      <li><a href="/logout">로그아웃</a></li>
       <%
         }
       %>

@@ -14,19 +14,20 @@
     <title>Title</title>
 </head>
 <body>
+<%@ include file="../common/navigation.jspf"%>
 <div class="container" style="width:80%">
 
     <h1> 홈화면</h1>
     <h2>  ${username} hello! </h2>
-    <br>
-    <%
-        if (request.getSession().getAttribute("username") == null) {
-            out.write("<a href=\"login\">로그인</a>");
-        } else {
-            out.write("<a href=\"logout\">로그아웃</a>");
-        }
-    %>
-    <br>
+<%--    <br>--%>
+<%--    <%--%>
+<%--        if (request.getSession().getAttribute("username") == null) {--%>
+<%--            out.write("<a href=\"login\">로그인</a>");--%>
+<%--        } else {--%>
+<%--            out.write("<a href=\"logout\">로그아웃</a>");--%>
+<%--        }--%>
+<%--    %>--%>
+<%--    <br>--%>
     <img src="images/homeimg.jpg" alt="지도 이미지">
     <br>
     <td> <a class="btn btn-primary" href="diner?page=1">음식 </a> </td>
