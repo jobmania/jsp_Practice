@@ -123,11 +123,13 @@ public class DinerService {
             rs = pstmt.executeQuery();
 
             while (rs.next()){
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String address = rs.getString("address");
                 String phone_num = rs.getString("phone_num");
                 String dish = rs.getString("dish");
-               diner.setName(name);
+               diner.setId(id);
+                diner.setName(name);
                diner.setAddress(address);
                diner.setPhone_num(phone_num);
                diner.setDish(dish);

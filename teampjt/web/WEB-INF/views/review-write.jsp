@@ -29,19 +29,18 @@
           <tr>
             <td>제목</td>
             <td><input type="text"  class="form-control" name="subject" value=""> </td>
-
           </tr>
 
+
           <tr>
-            <td>게시판 종류 </td>
+            <td>별점</td>
             <td><span class="btn_img select">
-                <select id="search_target" name="search_target" >
-                <option value="diner">음식점</option>
-                <option value="hall">콘서트</option>
-                <option value="cafe">카페</option>
-                <option value="gym">헬스장</option>
-                <option value="machine">헬스기구</option>
-                <option value="library">도서관</option>
+                <select id="stars" name="stars" >
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
                 </select>
             </span></td>
           </tr>
@@ -54,6 +53,8 @@
           <tr>
             <td colspan="2"  class="text-center">
 
+              <input type="hidden" name="board_id" value="${board_id}">
+              <input type="hidden" name="board_target" value="${board_target}">
 
               <input type="submit" value="리뷰쓰기완료" class="btn btn-success">
               <input type="reset" value="리뷰초기화" class="btn btn-warning">

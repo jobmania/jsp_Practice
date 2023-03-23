@@ -1,4 +1,4 @@
 package review;
 
-public class HallReview {
+public class HallReview extends Review{
 }

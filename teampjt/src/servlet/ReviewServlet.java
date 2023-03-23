@@ -1,5 +1,7 @@
 package servlet;
 
+import review.ReviewService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,10 +11,9 @@ import java.io.IOException;
 
 @WebServlet(name = "reviewServlet", value = "/review")
 public class ReviewServlet extends HttpServlet {
+    ReviewService reviewService = new ReviewService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
         request.getRequestDispatcher("/WEB-INF/views/review.jsp").forward(request,response);
     }
 

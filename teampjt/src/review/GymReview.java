@@ -1,4 +1,4 @@
 package review;
 
-public class GymReview {
+public class GymReview extends Review{
 }

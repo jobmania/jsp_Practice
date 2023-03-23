@@ -52,7 +52,7 @@ public class MapServlet extends HttpServlet {
         request.setAttribute("mapImage",base64Encoded);
 
 
-        request.getRequestDispatcher("/WEB-INF/views/detaildiner.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/views/diner-detail.jsp").forward(request,response);
     }
 
 
