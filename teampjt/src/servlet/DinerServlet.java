@@ -5,6 +5,7 @@ import diner.Diner;
 import diner.DinerService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,15 +14,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "dinerServlet", value = "/diner")
+@WebServlet(name = "dinerServlet", value = "/diner", initParams = {@WebInitParam(name="page", value = "1")}) // default 값 설정!
 public class DinerServlet extends HttpServlet {
     DinerService dinerService = new DinerService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String stringPage = request.getParameter("page");
+        int page = 0;
+
+        if(stringPage==null){
+            page = Integer.parseInt(this.getInitParameter("page"));
+        }else {
+            page = Integer.parseInt(stringPage);
+        }
+
+
         // 1페이지당 10개.
-        int page = Integer.parseInt(request.getParameter("page"));
-
-
         page -= 1; // first page =  0
 
         int totalCount = dinerService.getCount();
