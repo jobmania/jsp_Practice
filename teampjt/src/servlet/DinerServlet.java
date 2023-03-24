@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "dinerServlet", value = "/diner", initParams = {@WebInitParam(name="page", value = "1")}) // default 값 설정!
+@WebServlet(name = "dinerServlet", value = "/diner",
+        initParams = {@WebInitParam(name="page", value = "1")}) // default 값 설정!
 public class DinerServlet extends HttpServlet {
     DinerService dinerService = new DinerService();
     @Override
@@ -31,7 +32,7 @@ public class DinerServlet extends HttpServlet {
 
 
         // 1페이지당 10개.
-        page -= 1; // first page =  0
+        page -= 1; // first page =
 
         int totalCount = dinerService.getCount();
         List<Diner> pageDiners = dinerService.getPageDiners(page);

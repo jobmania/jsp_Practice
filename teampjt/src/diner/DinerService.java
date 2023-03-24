@@ -97,7 +97,7 @@ public class DinerService {
             //LIMIT 0,10; 0부터 10개까지
             String sql = "SELECT * FROM DINER LIMIT ?,10";
             PreparedStatement pstmt = null;
-            ResultSet rs = null;
+
 
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1,page*10);

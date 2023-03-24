@@ -40,8 +40,7 @@
     <button type="submit" class="ico_16px search">Search</button>
   </form>
 
-  <%--    ajax 검색창 --%>
-
+${fail}
 
 
   <%-- 테이블 --%>
@@ -78,14 +77,14 @@
     </tbody>
   </table>
 
-  <!-- 페이징 처리 -->
-  <div>
-    <% double totalPages = (int) request.getAttribute("totalPages"); %>
-    <% for (int i = 0; i < totalPages; i++) {%>
-    <a class="btn btn-primary" href="/diner?page=<%= i+1 %>">
-      <%= i+1 %> </a>
-    <% } %>
-  </div>
+<%--  <!-- 페이징 처리 -->--%>
+<%--  <div>--%>
+<%--    <% double totalPages = (int) request.getAttribute("totalPages"); %>--%>
+<%--    <% for (int i = 0; i < totalPages; i++) {%>--%>
+<%--    <a class="btn btn-primary" href="/diner?page=<%= i+1 %>">--%>
+<%--      <%= i+1 %> </a>--%>
+<%--    <% } %>--%>
+<%--  </div>--%>
 
 
 </div>

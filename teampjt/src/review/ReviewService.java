@@ -1,6 +1,7 @@
 package review;
 
 import connectdb.ConnectionDB;
+import diner.Diner;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,17 +11,19 @@ import java.util.Map;
 
 public class ReviewService {
     ConnectionDB dbConnect = new ConnectionDB();
-    private Map<String, Review> reviewMap = new HashMap<>();
 
-   public ReviewService(){
-       reviewMap.put("diner", new DinerReview());
-       reviewMap.put("hall", new HallReview());
-       reviewMap.put("cafe", new CafeReview());
-       reviewMap.put("gym", new GymReview());
-       reviewMap.put("library", new LibraryReview());
-       reviewMap.put("machine", new MachineReview());
-   }
+    private Map<String, String> reviewMap = new HashMap<>();
 
+    public ReviewService(){
+        reviewMap.put("diner", "diner_user");
+        reviewMap.put("cafe", "cafe_user");
+        reviewMap.put("gym", "gym_user");
+        reviewMap.put("hall", "hall_user");
+        reviewMap.put("library", "library_user");
+        reviewMap.put("machine", "machine_user");
+    }
+
+    List<String> reviewNameList = new ArrayList<>();
 
     // 전체 리뷰글 불러오기
     public List<Review> getAllReviews(){
@@ -50,12 +53,9 @@ public class ReviewService {
 
 
         /// 널 체크
-        if(subject==null||content==null){
+        if(subject.isEmpty()||content.isEmpty()){
             return false;
         }
-
-
-        Review review = reviewMap.get(boardTarget);
 
 
         try {
@@ -74,13 +74,9 @@ public class ReviewService {
             }
 
 
-
-
-
             String tableName = boardTarget + "_user";
             String columnName = boardTarget + "_id";
             // 항목에 맞는 review 주입.
-//        INSERT INTO `webservice`.`diner_user` (`user_id`, `diner_id`, `subject`, `review`, `stars`) VALUES ('7', '9', '제목', '내용', '4');
             writeSql = "INSERT INTO " + tableName + " (user_id," + columnName +", subject, review, stars) VALUES(?,?,?,?,?)";
             PreparedStatement writePstmt = con.prepareStatement(writeSql);
 
@@ -93,8 +89,6 @@ public class ReviewService {
             writePstmt.executeUpdate();
             writePstmt.close();
 
-            System.out.println(writeSql);
-
 
             dbConnect.closeAll(rs, pstmt, con);
         } catch (SQLException e) {
@@ -104,4 +98,71 @@ public class ReviewService {
 
         return true;
    }
+
+    public int getCount() {
+        int count = 0;
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "SELECT COUNT(*) FROM DINER_USER";
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+
+            while (rs.next()){
+                count =  rs.getInt(1);
+            }
+
+            dbConnect.closeAll(rs, pstmt, con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+
+    }
+
+    public List<Review> getPageAllReview(int page) {
+        List<Review> reviewList = new ArrayList<>();
+
+
+        try {
+            Connection con = dbConnect.getCon();
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+            //LIMIT 0,10; 0부터 10개까지
+            //https://blog.outsider.ne.kr/266
+            for (int i = 0; i < reviewMap.size(); i++) {
+                String sql = "SELECT * FROM ? LIMIT ?,10 ORDER BY ?";
+
+
+
+                pstmt = con.prepareStatement(sql);
+                pstmt.setInt(1,page*10);
+                pstmt.setString(2,"reg_date");
+
+                rs = pstmt.executeQuery();
+                while (rs.next()){
+
+                    int user_id = rs.getInt("user_id");
+                    int board_id = rs.getInt(3);
+                    String address = rs.getString("address");
+                    String phone_num = rs.getString("phone_num");
+                    String dish = rs.getString("dish");
+                    Diner diner =new Diner(id, name,address,phone_num,dish);
+                    reviewList.add(diner);
+
+            }
+
+
+
+            }
+            dbConnect.closeAll(rs, pstmt, con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reviewList;
+
+    }
 }
