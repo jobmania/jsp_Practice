@@ -32,8 +32,15 @@ public class ReviewWriteServlet extends HttpServlet {
         String stars = request.getParameter("stars"); // 별점
         String content = request.getParameter("content"); // 리뷰내용
 
+        System.out.println("stars = " + stars);
+
         boolean checkWriting = reviewService.writeReview(username, subject,boardId, boardTarget, stars, content);
 
+        if(checkWriting){
+            // 성공시
+        }else {
+            //실패시 
+        }
 
     }
 

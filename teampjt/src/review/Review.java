@@ -5,6 +5,15 @@ public class Review {
     private String contents;
     private int starts;
 
+    public Review() {
+
+    }
+
+    public Review(String subject, String contents, int starts) {
+        this.subject = subject;
+        this.contents = contents;
+        this.starts = starts;
+    }
 
     public String getSubject() {
         return subject;

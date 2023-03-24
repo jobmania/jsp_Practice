@@ -5,20 +5,19 @@ import diner.Diner;
 import java.nio.file.Paths;
 
 public class DinerReview extends Review{
-    private Diner diner;
+
+    private int id;
+
+    private int dinerId;
+    private int userId;
+
+
 
     public DinerReview(){
     }
 
-    public DinerReview(Diner diner) {
-        this.diner = diner;
+    public DinerReview(String subject, String contents, int starts) {
+        super(subject, contents, starts);
     }
 
-    public Diner getDiner() {
-        return diner;
-    }
-
-    public void setDiner(Diner diner) {
-        this.diner = diner;
-    }
 }
