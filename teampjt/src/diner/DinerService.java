@@ -71,22 +71,7 @@ public class DinerService {
         return count;
     }
 
-    public List<Diner> getDiners() { // 다 들고오기
-        List<Diner> diners = new ArrayList<>();
 
-        try {
-            Connection con = dbConnect.getCon();
-            String sql = "SELECT * FROM DINER";
-            PreparedStatement pstmt = null;
-            ResultSet rs = null;
-
-            pstmt = con.prepareStatement(sql);
-            writeDinerList(diners, con, pstmt);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return diners;
-    }
 
 
     public List<Diner> getPageDiners(int page) {

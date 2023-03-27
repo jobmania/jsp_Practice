@@ -1,28 +1,35 @@
 package review;
 
+import java.sql.Date;
+
 public class Review {
 
     private int id;
 
     private int userId;
+    private int tableId;
+    private String tableName;
     private String subject;
     private String contents;
-    private int starts;
+    private int stars;
 
-    private String reg_date;
-    private String mod_date;
+    private Date reg_date;
+    private Date mod_date;
 
     public Review(){
-
     }
 
 
-    public Review(int id, int userId, String subject, String contents, int starts, String reg_date, String mod_date) {
+    public Review(int id, int userId, int tableId, String tableName,
+                  String subject, String contents, int stars,
+                  Date reg_date, Date mod_date) {
         this.id = id;
         this.userId = userId;
+        this.tableId = tableId;
+        this.tableName = tableName;
         this.subject = subject;
         this.contents = contents;
-        this.starts = starts;
+        this.stars = stars;
         this.reg_date = reg_date;
         this.mod_date = mod_date;
     }
@@ -43,6 +50,22 @@ public class Review {
         this.userId = userId;
     }
 
+    public int getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(int tableId) {
+        this.tableId = tableId;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
     public String getSubject() {
         return subject;
     }
@@ -59,27 +82,27 @@ public class Review {
         this.contents = contents;
     }
 
-    public int getStarts() {
-        return starts;
+    public int getStars() {
+        return stars;
     }
 
-    public void setStarts(int starts) {
-        this.starts = starts;
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
-    public String getReg_date() {
+    public Date getReg_date() {
         return reg_date;
     }
 
-    public void setReg_date(String reg_date) {
+    public void setReg_date(Date reg_date) {
         this.reg_date = reg_date;
     }
 
-    public String getMod_date() {
+    public Date getMod_date() {
         return mod_date;
     }
 
-    public void setMod_date(String mod_date) {
+    public void setMod_date(Date mod_date) {
         this.mod_date = mod_date;
     }
 }

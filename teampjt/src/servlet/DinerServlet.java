@@ -21,18 +21,7 @@ public class DinerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String stringPage = request.getParameter("page");
-        int page ;
-
-        if(stringPage==null){
-            page = Integer.parseInt(this.getInitParameter("page"));
-        }else {
-            page = Integer.parseInt(stringPage);
-        }
-
-
-        // 1페이지당 10개.
-        page -= 1; // first page =
+        int page = getPage(request);
 
         int totalCount = dinerService.getCount();
         List<Diner> pageDiners = dinerService.getPageDiners(page);
@@ -65,6 +54,22 @@ public class DinerServlet extends HttpServlet {
         request.setAttribute("sendPageNum",page+1);
         request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
 
+    }
+
+    private int getPage(HttpServletRequest request) {
+        String stringPage = request.getParameter("page");
+        int page ;
+
+        if(stringPage==null){
+            page = Integer.parseInt(this.getInitParameter("page"));
+        }else {
+            page = Integer.parseInt(stringPage);
+        }
+
+
+        // 1페이지당 10개.
+        page -= 1; // first page =
+        return page;
     }
 
     @Override

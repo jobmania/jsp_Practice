@@ -6,6 +6,8 @@ public class User {
 
     private String nickName;
 
+    private String role;
+
 
     // 추가 항목들 설정 가능
 

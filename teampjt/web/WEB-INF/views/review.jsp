@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
   <link rel="stylesheet"
@@ -18,30 +19,21 @@
 <%@ include file="../common/navigation.jspf"%>
 <h1> 전체 리뷰!  </h1>
 <a class="btn btn-primary" href="/home"> 홈으로 </a>
-<img src="/images/spring.png" alt=" 이미지"><br>
+
 <div class="container" style="width:70%">
 
-  <%--   검색창   --%>
-  <form id="searchBar" action="/review/search" method="get">
-        <span class="btn_img itx_wrp">
-            <label for="search_keyword">검색</label>
-            <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="">
-        </span>
+
+  <%--   sort창   --%>
+  <form id="searchBar" action="/review" method="get">
+
     <span class="btn_img select">
-            <select id="search_target" name="search_target">
-            <option value="name">제목</option>
-            <option value="contents">내용</option>
-            <option value="all">제목+내용</option>
+            <select id="sort_target" name="sort">
+            <option value="reg_date">최신순</option>
+            <option value="stars">별점순</option>
             </select>
-        </span>
-    <span>
- <input type="hidden" name="page" value="1"> <%-- 페이지 1 값 보내기 --%>
-        </span>
+    </span>
     <button type="submit" class="ico_16px search">Search</button>
   </form>
-
-${fail}
-
 
   <%-- 테이블 --%>
   <table class="table table-striped" , id="dinerTable">
@@ -52,43 +44,44 @@ ${fail}
       <th>번호</th>
       <th>게시글 제목</th>
       <th>종류</th>
+      <th>등록날짜</th>
       <th>평점</th>
     </tr>
     </thead>
     <tbody>
-    <c:if test="${empty diners}">
+    <c:if test="${empty pageReview}">
       <tr>
         <td colspan="5">No data available</td>
       </tr>
     </c:if>
 
-    <c:forEach items="${diners}" var="diner" varStatus="status">
+    <c:forEach items="${pageReview}" var="review" varStatus="status">
 
       <tr>
         <td>${(sendPageNum - 1) * 10 + status.index + 1}</td>
-        <td>${diner.name}</td>
-        <td>${diner.address}</td>
-        <td>${diner.phone_num}</td>
-        <td><a class="btn btn-primary" href="map?address=${diner.address}">상세 보기</a></td>
+        <td>${review.subject}</td>
+        <td>${review.tableName}</td>
+        <td>${review.reg_date}</td>
+        <td>${review.stars}</td>
+        <td><a class="btn btn-primary" href="/home">상세 보기</a></td>
       </tr>
     </c:forEach>
     </tbody>
   </table>
 
-<%--  <!-- 페이징 처리 -->--%>
-<%--  <div>--%>
-<%--    <% double totalPages = (int) request.getAttribute("totalPages"); %>--%>
-<%--    <% for (int i = 0; i < totalPages; i++) {%>--%>
-<%--    <a class="btn btn-primary" href="/diner?page=<%= i+1 %>">--%>
-<%--      <%= i+1 %> </a>--%>
-<%--    <% } %>--%>
-<%--  </div>--%>
+  <!-- 페이징 처리 -->
+  <div>
+    <% double totalPages = (int) request.getAttribute("totalPages"); %>
+    <% for (int i = 0; i < totalPages; i++) {%>
+    <a class="btn btn-primary" href="/review?page=<%= i+1 %>&sort=${sort}">
+      <%= i+1 %> </a>
+    <% } %>
+  </div>
 
 
 </div>
 
 리뷰 글 확인
-<input type="button"  class="btn btn-primary" onclick="location.href='/review/write'" value="리뷰작성">
 
 </body>
 </html>

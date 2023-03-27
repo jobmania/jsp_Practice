@@ -12,38 +12,6 @@ import java.util.Map;
 public class ReviewService {
     ConnectionDB dbConnect = new ConnectionDB();
 
-    private Map<String, String> reviewMap = new HashMap<>();
-
-    public ReviewService(){
-        reviewMap.put("diner", "diner_user");
-        reviewMap.put("cafe", "cafe_user");
-        reviewMap.put("gym", "gym_user");
-        reviewMap.put("hall", "hall_user");
-        reviewMap.put("library", "library_user");
-        reviewMap.put("machine", "machine_user");
-    }
-
-    List<String> reviewNameList = new ArrayList<>();
-
-    // 전체 리뷰글 불러오기
-    public List<Review> getAllReviews(){
-
-        try {
-            Connection con = dbConnect.getCon();
-            String sql = "SELECT * FROM DINER";
-            PreparedStatement pstmt = null;
-            ResultSet rs = null;
-            pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-
-            dbConnect.closeAll(rs, pstmt, con);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        return null;
-    }
 
     // 리뷰 작성
     public boolean writeReview(String username, String subject, String boardId, String boardTarget, String stars, String content) {
@@ -53,23 +21,23 @@ public class ReviewService {
 
 
         /// 널 체크 (String이 빈배열로 넘어올시 ""처리 됨 )
-        if(subject.isEmpty()||content.isEmpty()){
+        if (subject.isEmpty() || content.isEmpty()) {
             return false;
         }
 
 
         try {
             Connection con = dbConnect.getCon();
-            userSql = "SELECT * FROM USER WHERE EMAIL = ?" ;
+            userSql = "SELECT * FROM USER WHERE EMAIL = ?";
 
             PreparedStatement pstmt = null;
             ResultSet rs = null;
 
             // 유저 id 값 찾아오기
             pstmt = con.prepareStatement(userSql);
-            pstmt.setString(1,username);
+            pstmt.setString(1, username);
             rs = pstmt.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 userId = rs.getInt("id");
             }
 
@@ -78,11 +46,11 @@ public class ReviewService {
             writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name) VALUES(?,?,?,?,?,?)";
             PreparedStatement writePstmt = con.prepareStatement(writeSql);
 
-            writePstmt.setInt(1,userId);
-            writePstmt.setInt(2,Integer.parseInt(boardId));
-            writePstmt.setString(3,subject);
-            writePstmt.setString(4,content);
-            writePstmt.setInt(5,Integer.parseInt(stars));
+            writePstmt.setInt(1, userId);
+            writePstmt.setInt(2, Integer.parseInt(boardId));
+            writePstmt.setString(3, subject);
+            writePstmt.setString(4, content);
+            writePstmt.setInt(5, Integer.parseInt(stars));
             writePstmt.setString(6, boardTarget);
 
             writePstmt.executeUpdate();
@@ -96,22 +64,20 @@ public class ReviewService {
         }
 
         return true;
-   }
+    }
 
+    // 전체 갯수
     public int getCount() {
         int count = 0;
         try {
             Connection con = dbConnect.getCon();
-            String sql = "SELECT COUNT(*) FROM DINER_USER";
-            PreparedStatement pstmt = null;
-            ResultSet rs = null;
+            String sql = "SELECT COUNT(*) FROM USER_REVIEW";
 
-            pstmt = con.prepareStatement(sql);
-            rs = pstmt.executeQuery();
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
 
-
-            while (rs.next()){
-                count =  rs.getInt(1);
+            while (rs.next()) {
+                count = rs.getInt(1);
             }
 
             dbConnect.closeAll(rs, pstmt, con);
@@ -122,9 +88,8 @@ public class ReviewService {
 
     }
 
-    public List<Review> getPageAllReview(int page) {
+    public List<Review> getPageAllReview(int page,String sort) {
         List<Review> reviewList = new ArrayList<>();
-
 
         try {
             Connection con = dbConnect.getCon();
@@ -132,30 +97,33 @@ public class ReviewService {
             ResultSet rs = null;
             //LIMIT 0,10; 0부터 10개까지
             //https://blog.outsider.ne.kr/266
-            for (int i = 0; i < reviewMap.size(); i++) {
-                String sql = "SELECT * FROM ? LIMIT ?,10 ORDER BY ?";
 
 
+            String sql = "SELECT * FROM USER_REVIEW ORDER BY "+sort+" DESC LIMIT ?,10 ";
 
-                pstmt = con.prepareStatement(sql);
-                pstmt.setInt(1,page*10);
-                pstmt.setString(2,"reg_date");
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, page * 10);
+//            pstmt.setString(2, sort);
 
-                rs = pstmt.executeQuery();
-                while (rs.next()){
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int review_id = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                int board_id = rs.getInt("table_id");
+                Date reg_date = rs.getDate("reg_date");
+                Date mod_date = rs.getDate("mod_date");
+                String subject = rs.getString("subject");
+                String contents = rs.getString("review"); // 리뷰내용
+                int stars = rs.getInt("stars");
+                String board_target = rs.getString("table_name");
 
-                    int user_id = rs.getInt("user_id");
-                    int board_id = rs.getInt(3);
-                    String address = rs.getString("address");
-                    String phone_num = rs.getString("phone_num");
-                    String dish = rs.getString("dish");
+                Review review = new Review(review_id,user_id,board_id,board_target
+                ,subject,contents,stars, reg_date, mod_date);
 
-
+                reviewList.add(review);
             }
 
 
-
-            }
             dbConnect.closeAll(rs, pstmt, con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
