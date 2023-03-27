@@ -37,7 +37,8 @@ public class ReviewWriteServlet extends HttpServlet {
                 request.setAttribute("review",findReview);
                 request.getRequestDispatcher("/WEB-INF/views/review-update.jsp").forward(request,response);
             }else{  // 사용자가 다른사용자 게시글을 수정요청할때
-              response.sendRedirect("/review");
+                request.setAttribute("fail"," 작성자만 수정할 수 있습니다.");
+                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request,response);
             }
         }
 
@@ -65,14 +66,22 @@ public class ReviewWriteServlet extends HttpServlet {
                 response.sendRedirect("/review");
             }else {
                 //실패시
+
                 request.setAttribute("fail","제목 또는 내용이 비었습니다.");
-                request.getRequestDispatcher("/WEB-INF/views/review.jsp").forward(request,response);
+                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request,response);
             }
 
         }else { // 수정
             String reviewId = pathInfo.substring(1);
-            boolean checkUpdating = reviewService.updateReview(subject, stars, content);
+            boolean checkUpdating = reviewService.updateReview(reviewId,subject, stars, content);
 
+            if(checkUpdating){
+                //성공시
+                response.sendRedirect("/review");
+            }else {
+                request.setAttribute("fail", "제목 또는 내용이 비었습니다.");
+                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request,response);
+            }
 
         }
 

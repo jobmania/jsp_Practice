@@ -20,8 +20,8 @@ public class ReviewService {
         int userId = 0;
 
 
-        /// 널 체크 (String이 빈배열로 넘어올시 ""처리 됨 )
-        if (subject.isEmpty() || content.isEmpty()) {
+        /// (String이 공백 체크 됨 )
+        if (subject.isBlank() || content.isBlank()) {
             return false;
         }
 
@@ -66,7 +66,33 @@ public class ReviewService {
         return true;
     }
 
+    public boolean updateReview(String reviewId, String subject, String stars, String content) {
+
+        /// 널 체크 (String이 빈배열로 넘어올시 ""처리 됨 )
+        if (subject.isBlank() || content.isBlank()) {
+            return false;
+        }
+
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "UPDATE user_review SET subject = ?, review = ?, stars =? WHERE id = "+ reviewId ;
+
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,subject);
+            pstmt.setString(2,content);
+            pstmt.setInt(3,Integer.parseInt(stars));
+            pstmt.executeUpdate();
+
+            dbConnect.closeAll(null, pstmt, con);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return true;
+    }
     // 전체 갯수
+
     public int getCount() {
         int count = 0;
         try {
@@ -171,24 +197,5 @@ public class ReviewService {
             throw new RuntimeException(e);
         }
         return review;
-    }
-
-    public boolean updateReview(String subject, String stars, String content) {
-        try {
-            Connection con = dbConnect.getCon();
-            String sql = "";
-
-
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            ResultSet rs = pstmt.executeQuery();
-
-
-            dbConnect.closeAll(rs, pstmt, con);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return true;
     }
 }
