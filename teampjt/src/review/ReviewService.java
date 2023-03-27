@@ -192,10 +192,27 @@ public class ReviewService {
                         , subject, contents, stars, reg_date, mod_date);
             }
 
+          
+
             dbConnect.closeAll(rs, pstmt, con);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return review;
+    }
+
+    public void deleteReview(String reviewId) {
+
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "DELETE FROM user_review WHERE id = "+ reviewId;
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.executeUpdate();
+
+            dbConnect.closeAll(null, pstmt, con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

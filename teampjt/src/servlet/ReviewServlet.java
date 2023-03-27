@@ -14,7 +14,8 @@ import java.util.List;
 
 @WebServlet(name = "reviewServlet", value = {"/review", "/review/*"},
         initParams = {@WebInitParam(name="page", value = "1"),
-                      @WebInitParam(name = "sort", value = "reg_date")}) // default 값 설정!
+                      @WebInitParam(name = "sort", value = "reg_date"),
+                      @WebInitParam(name = "board", value = "")}) // default 값 설정!
 public class ReviewServlet extends HttpServlet {
     ReviewService reviewService = new ReviewService();
     @Override

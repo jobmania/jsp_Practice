@@ -61,7 +61,9 @@
                                if(loginUsername != null && loginUsername.equals(writtenUsername)){
                                   %>
                         <a class="btn btn-primary" href="/review/write/<%=review.getId()%>">리뷰 수정하기</a>
-                        <a class="btn btn-primary" href="/review/delete/<%=review.getId()%>">리뷰 삭제하기</a>
+                            <form method="post" action="/delete/<%=review.getId()%>">
+                                <button type="submit" class="btn btn-primary">리뷰 삭제하기</button>
+                            </form>
                         <% } %>
 
 
