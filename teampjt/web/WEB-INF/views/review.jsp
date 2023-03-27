@@ -46,6 +46,7 @@
       <th>종류</th>
       <th>등록날짜</th>
       <th>평점</th>
+      <th>작성자</th>
     </tr>
     </thead>
     <tbody>
@@ -63,6 +64,7 @@
         <td>${review.tableName}</td>
         <td>${review.reg_date}</td>
         <td>${review.stars}</td>
+        <td>${review.email  }</td>
         <td><a class="btn btn-primary" href="/home">상세 보기</a></td>
       </tr>
     </c:forEach>

@@ -19,7 +19,7 @@ public class ReviewServlet extends HttpServlet {
     ReviewService reviewService = new ReviewService();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+      
         int page = getPage(request);
 
         String sort = getSort(request);

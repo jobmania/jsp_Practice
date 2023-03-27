@@ -99,7 +99,9 @@ public class ReviewService {
             //https://blog.outsider.ne.kr/266
 
 
-            String sql = "SELECT * FROM USER_REVIEW ORDER BY "+sort+" DESC LIMIT ?,10 ";
+            String sql = "SELECT *, user.email AS email FROM USER_REVIEW INNER JOIN user " +
+                    "ON user_review.user_id = user.id ORDER BY "+sort+" DESC LIMIT ?,10 ";
+
 
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, page * 10);
@@ -110,6 +112,7 @@ public class ReviewService {
                 int review_id = rs.getInt("id");
                 int user_id = rs.getInt("user_id");
                 int board_id = rs.getInt("table_id");
+                String email = rs.getString("email");
                 Date reg_date = rs.getDate("reg_date");
                 Date mod_date = rs.getDate("mod_date");
                 String subject = rs.getString("subject");
@@ -117,7 +120,7 @@ public class ReviewService {
                 int stars = rs.getInt("stars");
                 String board_target = rs.getString("table_name");
 
-                Review review = new Review(review_id,user_id,board_id,board_target
+                Review review = new Review(review_id,user_id, email, board_id,board_target
                 ,subject,contents,stars, reg_date, mod_date);
 
                 reviewList.add(review);

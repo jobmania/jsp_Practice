@@ -7,6 +7,7 @@ public class Review {
     private int id;
 
     private int userId;
+    private String email;
     private int tableId;
     private String tableName;
     private String subject;
@@ -20,11 +21,12 @@ public class Review {
     }
 
 
-    public Review(int id, int userId, int tableId, String tableName,
+    public Review(int id, int userId, String email, int tableId, String tableName,
                   String subject, String contents, int stars,
                   Date reg_date, Date mod_date) {
         this.id = id;
         this.userId = userId;
+        this.email = email;
         this.tableId = tableId;
         this.tableName = tableName;
         this.subject = subject;
@@ -32,6 +34,14 @@ public class Review {
         this.stars = stars;
         this.reg_date = reg_date;
         this.mod_date = mod_date;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

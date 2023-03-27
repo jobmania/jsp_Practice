@@ -28,7 +28,7 @@
 
           <tr>
             <td>제목</td>
-            <td><input type="text"  class="form-control" name="subject" value=""> </td>
+            <td><input type="text"  class="form-control" name="subject" value="" placeholder="여기에 적으세요." autofocus> </td>
           </tr>
 
 

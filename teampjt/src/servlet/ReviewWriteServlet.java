@@ -37,7 +37,7 @@ public class ReviewWriteServlet extends HttpServlet {
 
         if(checkWriting){
             // 성공시
-            response.sendRedirect("/home");
+            response.sendRedirect("/review");
         }else {
             //실패시
             request.setAttribute("fail","제목 또는 내용이 비었습니다.");
