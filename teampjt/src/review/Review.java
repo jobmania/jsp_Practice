@@ -36,6 +36,24 @@ public class Review {
         this.mod_date = mod_date;
     }
 
+    public void update(int id, int userId, String email, int tableId, String tableName,
+                       String subject, String contents, int stars,
+                       Date reg_date, Date mod_date){
+        this.id = id;
+        this.userId = userId;
+        this.email = email;
+        this.tableId = tableId;
+        this.tableName = tableName;
+        this.subject = subject;
+        this.contents = contents;
+        this.stars = stars;
+        this.reg_date = reg_date;
+        this.mod_date = mod_date;
+    }
+
+
+
+
     public String getEmail() {
         return email;
     }

@@ -105,7 +105,7 @@ public class ReviewService {
 
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, page * 10);
-//            pstmt.setString(2, sort);
+
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -133,5 +133,43 @@ public class ReviewService {
         }
         return reviewList;
 
+    }
+
+    public Review getReview(String reviewId) {
+
+        Review review = new Review();
+
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "SELECT user_review.*, user.email AS email " +
+                    " FROM USER_REVIEW " +
+                    " INNER JOIN user ON user_review.user_id = user.id " +
+                    "  WHERE user_review.ID = " + reviewId;
+
+
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int review_id = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                int board_id = rs.getInt("table_id");
+                String email = rs.getString("email");
+                Date reg_date = rs.getDate("reg_date");
+                Date mod_date = rs.getDate("mod_date");
+                String subject = rs.getString("subject");
+                String contents = rs.getString("review"); // 리뷰내용
+                int stars = rs.getInt("stars");
+                String board_target = rs.getString("table_name");
+
+                review.update(review_id,user_id, email, board_id,board_target
+                        ,subject,contents,stars, reg_date, mod_date);
+            }
+
+            dbConnect.closeAll(rs, pstmt, con);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return review;
     }
 }

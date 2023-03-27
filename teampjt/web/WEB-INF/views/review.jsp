@@ -65,7 +65,7 @@
         <td>${review.reg_date}</td>
         <td>${review.stars}</td>
         <td>${review.email  }</td>
-        <td><a class="btn btn-primary" href="/home">상세 보기</a></td>
+        <td><a class="btn btn-primary" href="/review/${review.id}">상세 보기</a></td>
       </tr>
     </c:forEach>
     </tbody>
