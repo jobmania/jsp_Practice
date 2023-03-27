@@ -24,7 +24,7 @@
       <%
       } else {
       %>
-      <li><a href="/logout">로그아웃</a></li>
+      <li><a href="/logout"><%=request.getSession().getAttribute("username")%> 로그아웃</a></li>
       <%
         }
       %>

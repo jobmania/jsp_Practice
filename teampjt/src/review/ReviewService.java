@@ -88,7 +88,7 @@ public class ReviewService {
 
     }
 
-    public List<Review> getPageAllReview(int page,String sort) {
+    public List<Review> getPageAllReview(int page, String sort) {
         List<Review> reviewList = new ArrayList<>();
 
         try {
@@ -100,7 +100,7 @@ public class ReviewService {
 
 
             String sql = "SELECT *, user.email AS email FROM USER_REVIEW INNER JOIN user " +
-                    "ON user_review.user_id = user.id ORDER BY "+sort+" DESC LIMIT ?,10 ";
+                    "ON user_review.user_id = user.id ORDER BY " + sort + " DESC LIMIT ?,10 ";
 
 
             pstmt = con.prepareStatement(sql);
@@ -120,8 +120,8 @@ public class ReviewService {
                 int stars = rs.getInt("stars");
                 String board_target = rs.getString("table_name");
 
-                Review review = new Review(review_id,user_id, email, board_id,board_target
-                ,subject,contents,stars, reg_date, mod_date);
+                Review review = new Review(review_id, user_id, email, board_id, board_target
+                        , subject, contents, stars, reg_date, mod_date);
 
                 reviewList.add(review);
             }
@@ -162,8 +162,8 @@ public class ReviewService {
                 int stars = rs.getInt("stars");
                 String board_target = rs.getString("table_name");
 
-                review.update(review_id,user_id, email, board_id,board_target
-                        ,subject,contents,stars, reg_date, mod_date);
+                review.update(review_id, user_id, email, board_id, board_target
+                        , subject, contents, stars, reg_date, mod_date);
             }
 
             dbConnect.closeAll(rs, pstmt, con);
@@ -171,5 +171,24 @@ public class ReviewService {
             throw new RuntimeException(e);
         }
         return review;
+    }
+
+    public boolean updateReview(String subject, String stars, String content) {
+        try {
+            Connection con = dbConnect.getCon();
+            String sql = "";
+
+
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+
+            dbConnect.closeAll(rs, pstmt, con);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return true;
     }
 }

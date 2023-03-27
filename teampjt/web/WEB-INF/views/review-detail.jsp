@@ -1,4 +1,4 @@
-<%--
+<%@ page import="review.Review" %><%--
   Created by IntelliJ IDEA.
   User: admin
   Date: 2023-03-27
@@ -53,10 +53,18 @@
 
 
 
-<%--                             본인이 쓴 글일때만 삭제 및 수정 버튼 생성.--%>
-<%--                            <input type="submit" value="리뷰쓰기완료" class="btn btn-success">--%>
-<%--                            <input type="reset" value="리뷰초기화" class="btn btn-warning">--%>
+
                             <input type="button"  class="btn btn-primary" onclick="location.href='/review'" value="리뷰 글보기">
+                            <% String loginUsername = (String) request.getSession().getAttribute("username");
+                                Review review = (Review) request.getAttribute("review");
+                                String writtenUsername = review.getEmail();
+                               if(loginUsername != null && loginUsername.equals(writtenUsername)){
+                                  %>
+                        <a class="btn btn-primary" href="/review/write/<%=review.getId()%>">리뷰 수정하기</a>
+                        <a class="btn btn-primary" href="/review/delete/<%=review.getId()%>">리뷰 삭제하기</a>
+                        <% } %>
+
+
                         </td>
                     </tr>
 

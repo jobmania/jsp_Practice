@@ -12,16 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.net.http.HttpHeaders;
 import java.util.Base64;
-import java.util.Map;
 
 @WebServlet(name = "mapServlet", value = "/map")
 public class MapServlet extends HttpServlet {
