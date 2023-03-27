@@ -18,7 +18,7 @@
 <%@ include file="../common/navigation.jspf"%>
 <h1> 전체 리뷰!  </h1>
 <a class="btn btn-primary" href="/home"> 홈으로 </a>
-<img src="/images/homeimg.jpg" alt=" 이미지"><br>
+<img src="/images/spring.png" alt=" 이미지"><br>
 <div class="container" style="width:70%">
 
   <%--   검색창   --%>
@@ -50,10 +50,9 @@ ${fail}
     <thead>
     <tr>
       <th>번호</th>
-      <th>음식점 이름</th>
-      <th>주소</th>
-      <th>음식점 전화번호</th>
-      <th>메인 요리</th>
+      <th>게시글 제목</th>
+      <th>종류</th>
+      <th>평점</th>
     </tr>
     </thead>
     <tbody>
@@ -70,7 +69,6 @@ ${fail}
         <td>${diner.name}</td>
         <td>${diner.address}</td>
         <td>${diner.phone_num}</td>
-        <td>${diner.dish}</td>
         <td><a class="btn btn-primary" href="map?address=${diner.address}">상세 보기</a></td>
       </tr>
     </c:forEach>

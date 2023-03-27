@@ -28,8 +28,7 @@
 <%--        }--%>
 <%--    %>--%>
 <%--    <br>--%>
-    <img src="images/homeimg.jpg" alt="지도 이미지" width="20%">
-
+    <img src="https://velog.velcdn.com/images/heelieben/post/3c15c708-c5b2-404e-858e-138241e90d77/image.png" width="30%">
 </div>
 
 </body>

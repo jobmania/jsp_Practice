@@ -52,7 +52,7 @@ public class ReviewService {
         int userId = 0;
 
 
-        /// 널 체크
+        /// 널 체크 (String이 빈배열로 넘어올시 ""처리 됨 )
         if(subject.isEmpty()||content.isEmpty()){
             return false;
         }
@@ -74,10 +74,8 @@ public class ReviewService {
             }
 
 
-            String tableName = boardTarget + "_user";
-            String columnName = boardTarget + "_id";
             // 항목에 맞는 review 주입.
-            writeSql = "INSERT INTO " + tableName + " (user_id," + columnName +", subject, review, stars) VALUES(?,?,?,?,?)";
+            writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name) VALUES(?,?,?,?,?,?)";
             PreparedStatement writePstmt = con.prepareStatement(writeSql);
 
             writePstmt.setInt(1,userId);
@@ -85,6 +83,7 @@ public class ReviewService {
             writePstmt.setString(3,subject);
             writePstmt.setString(4,content);
             writePstmt.setInt(5,Integer.parseInt(stars));
+            writePstmt.setString(6, boardTarget);
 
             writePstmt.executeUpdate();
             writePstmt.close();
@@ -150,8 +149,7 @@ public class ReviewService {
                     String address = rs.getString("address");
                     String phone_num = rs.getString("phone_num");
                     String dish = rs.getString("dish");
-                    Diner diner =new Diner(id, name,address,phone_num,dish);
-                    reviewList.add(diner);
+
 
             }
 
