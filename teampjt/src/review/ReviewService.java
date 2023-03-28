@@ -38,6 +38,8 @@ public class ReviewService {
                 userId = rs.getInt("id");
             }
 
+
+
             // 항목에 맞는 review 주입.
             switch (boardTarget){
                 case "diner":
@@ -140,7 +142,8 @@ public class ReviewService {
             //https://blog.outsider.ne.kr/266
 
 
-
+            // pk 외래키 사용 안할 시
+            /**
             String sql = "SELECT user_review.*, user.email, " +
                     " CASE " +
                     " WHEN user_review.table_name = 'diner' THEN diner.name " +
@@ -157,7 +160,20 @@ public class ReviewService {
                     " LEFT JOIN gym ON user_review.table_id = gym.id AND user_review.table_name = 'gym' " +
                     " LEFT JOIN library ON user_review.table_id = library.id AND user_review.table_name = 'library' " +
                     " ORDER BY " + sort + " DESC LIMIT ?,10;";
+             */
 
+            // pk 외래키 사용시
+
+            String sql =" SELECT ur.*, u.email, " +
+                    "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                    " FROM USER_REVIEW ur " +
+                    " INNER JOIN user u ON ur.user_id = u.id " +
+                    " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                    " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                    " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                    " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                    " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                    " ORDER BY " + sort + " DESC LIMIT ?,10;";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, page * 10);
@@ -198,12 +214,42 @@ public class ReviewService {
             Connection con = dbConnect.getCon();
             PreparedStatement pstmt = null;
             ResultSet rs = null;
+
+            /** pk 외래키 사용전
+             *
             String sql = "SELECT * FROM user_review WHERE table_id = ? AND table_name = ? " +
                     " ORDER BY reg_date DESC LIMIT 0, 5";
+             * */
+
+            /** pk 외래키 사용 후  */
+            String sql = "";
+            switch (tableName){
+                case "diner":
+                    sql = "SELECT * FROM user_review WHERE diner_id = ? ORDER BY reg_date DESC LIMIT 0, 5";
+                    break;
+                case "hall":
+                    sql = "SELECT * FROM user_review WHERE hall_id = ? ORDER BY reg_date DESC LIMIT 0, 5";
+                    break;
+                case "gym":
+                    sql = "SELECT * FROM user_review WHERE gym_id = ? ORDER BY reg_date DESC LIMIT 0, 5";
+                    break;
+                case "library":
+                    sql = "SELECT * FROM user_review WHERE library_id = ? ORDER BY reg_date DESC LIMIT 0, 5";
+                    break;
+                case "cafe":
+                    sql = "SELECT * FROM user_review WHERE cafe_id = ? ORDER BY reg_date DESC LIMIT 0, 5";
+                    break;
+            }
+
+
+
 
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, id);
-            pstmt.setString(2, tableName);
+            /** pk 외래키 사용 전
+             *  pstmt.setString(2, tableName);
+             * */
+
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -240,6 +286,8 @@ public class ReviewService {
         try {
             Connection con = dbConnect.getCon();
 
+        /** pk 사용 전
+
             String sql = "SELECT user_review.*, user.email, " +
                     " CASE " +
                     " WHEN user_review.table_name = 'diner' THEN diner.name " +
@@ -256,6 +304,19 @@ public class ReviewService {
                     " LEFT JOIN gym ON user_review.table_id = gym.id AND user_review.table_name = 'gym' " +
                     " LEFT JOIN library ON user_review.table_id = library.id AND user_review.table_name = 'library'" +
                     "  WHERE user_review.ID = " + reviewId;
+         */
+        /** pk 사용 후 */
+  // COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME
+            String sql = "SELECT ur.*, u.email, " +
+                    " COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) AS name " +
+                    " FROM user_review ur " +
+                    " INNER JOIN user u ON ur.user_id = u.id " +
+                    " LEFT JOIN diner d ON ur.diner_id = d.id " +
+                    " LEFT JOIN cafe c ON ur.cafe_id = c.id " +
+                    " LEFT JOIN hall h ON ur.hall_id = h.id  " +
+                    " LEFT JOIN gym g ON ur.gym_id = g.id  " +
+                    " LEFT JOIN library l ON ur.library_id = l.id " +
+                    "  WHERE ur.id = " + reviewId;
 
 
             PreparedStatement pstmt = con.prepareStatement(sql);
