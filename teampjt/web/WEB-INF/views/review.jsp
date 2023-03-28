@@ -19,11 +19,7 @@
 <%@ include file="../common/navigation.jspf"%>
 <h1> 전체 리뷰!  </h1>
 <a class="btn btn-primary" href="/home"> 홈으로 </a>
-<a class="btn btn-primary" href="/home"> 음식점 </a>
-<a class="btn btn-primary" href="/home"> 카페 </a>
-<a class="btn btn-primary" href="/home"> 콘서트 </a>
-<a class="btn btn-primary" href="/home"> 도서관 </a>
-<a class="btn btn-primary" href="/home"> 헬스장 </a>
+
 
 
 <div class="container" style="width:70%">
