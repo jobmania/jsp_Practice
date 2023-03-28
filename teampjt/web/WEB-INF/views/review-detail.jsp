@@ -39,7 +39,18 @@
                     <tr>
                         <td>작성자</td>
                         <td> ${review.email}</td>
+                    </tr>
 
+
+                    <tr>
+                        <td>작성한 시각</td>
+                        <td> ${review.reg_date}</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>수정한 시각</td>
+                        <td> ${review.mod_date}</td>
                     </tr>
 
                     <tr>

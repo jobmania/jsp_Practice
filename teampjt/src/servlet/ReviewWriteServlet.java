@@ -59,6 +59,11 @@ public class ReviewWriteServlet extends HttpServlet {
         String stars = request.getParameter("stars"); // 별점
         String content = request.getParameter("content"); // 리뷰내용
 
+        if(subject.length() > 15) {
+            request.setAttribute("fail", "입력된 문자열의 길이가 15를 초과했습니다.");
+            request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+        }
+
 
         if (pathInfo == null) {// 새로 작성
             String username = (String) request.getSession().getAttribute("username");
@@ -80,7 +85,7 @@ public class ReviewWriteServlet extends HttpServlet {
 
         } else { // 글 수정
             String reviewId = pathInfo.substring(1);
-            System.out.println(reviewId);
+
             boolean checkUpdating = reviewService.updateReview(reviewId, subject, stars, content);
 
             if (checkUpdating) {

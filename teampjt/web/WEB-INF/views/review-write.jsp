@@ -28,7 +28,7 @@
 
           <tr>
             <td>제목</td>
-            <td><input type="text"  class="form-control" name="subject" value="" placeholder="여기에 적으세요." autofocus> </td>
+            <td><input type="text"  class="form-control" name="subject" value="" placeholder="제목은 15글자 이내로 작성" autofocus> </td>
           </tr>
 
 
