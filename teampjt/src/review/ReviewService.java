@@ -1,13 +1,10 @@
 package review;
 
 import connectdb.ConnectionDB;
-import diner.Diner;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ReviewService {
     ConnectionDB dbConnect = new ConnectionDB();
@@ -16,7 +13,7 @@ public class ReviewService {
     // 리뷰 작성
     public boolean writeReview(String username, String subject, String boardId, String boardTarget, String stars, String content) {
         String userSql;
-        String writeSql;
+        String writeSql="";
         int userId = 0;
 
 
@@ -41,9 +38,26 @@ public class ReviewService {
                 userId = rs.getInt("id");
             }
 
-
             // 항목에 맞는 review 주입.
-            writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name) VALUES(?,?,?,?,?,?)";
+            switch (boardTarget){
+                case "diner":
+                    writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name, diner_id) VALUES(?,?,?,?,?,?,?)";
+                    break;
+                case "hall":
+                    writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name, hall_id) VALUES(?,?,?,?,?,?,?)";
+                    break;
+                case "gym":
+                    writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name, gym_id) VALUES(?,?,?,?,?,?,?)";
+                    break;
+                case "library":
+                    writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name, library_id) VALUES(?,?,?,?,?,?,?)";
+                    break;
+                case "cafe":
+                    writeSql = "INSERT INTO user_review (user_id, table_id, subject, review, stars, table_name, cafe_id) VALUES(?,?,?,?,?,?,?)";
+                    break;
+
+            }
+
             PreparedStatement writePstmt = con.prepareStatement(writeSql);
 
             writePstmt.setInt(1, userId);
@@ -52,6 +66,7 @@ public class ReviewService {
             writePstmt.setString(4, content);
             writePstmt.setInt(5, Integer.parseInt(stars));
             writePstmt.setString(6, boardTarget);
+            writePstmt.setInt(7,Integer.parseInt(boardId));
 
             writePstmt.executeUpdate();
             writePstmt.close();

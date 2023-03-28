@@ -29,7 +29,7 @@
     <form id="searchBar" action="/diner/search" method="get">
         <span class="btn_img itx_wrp">
             <label for="search_keyword">검색</label>
-            <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="">
+            <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="${searchKeyword}">
         </span>
         <span class="btn_img select">
             <select id="search_target" name="search_target">
