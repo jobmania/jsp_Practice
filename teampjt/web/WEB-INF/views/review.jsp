@@ -68,10 +68,14 @@
       <tr>
         <td>${(sendPageNum - 1) * 10 + status.index + 1}</td>
         <td>${review.subject}</td>
-        <td><a href="/"></a>${review.targetName}</td>
+        <td><a href="/${review.tableName}/search?search_keyword=${review.targetName}&search_target=name&page=1">${review.targetName}</a></td>
         <td>${review.tableName}</td>
         <td>${review.reg_date}</td>
-        <td>${review.stars}</td>
+        <td>
+          <c:forEach begin="1" end="${review.stars}">
+            ⭐
+          </c:forEach>
+        </td>
         <td>${review.email  }</td>
         <td><a class="btn btn-primary" href="/review/${review.id}">상세 보기</a></td>
       </tr>

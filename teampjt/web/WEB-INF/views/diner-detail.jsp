@@ -14,6 +14,18 @@
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .map, .reviews {
+            flex-basis: 50%;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <%@ include file="../common/navigation.jspf"%>
@@ -21,10 +33,41 @@
 <a class="btn btn-primary" href="home"> 홈으로 </a>
 <div class="container" style="width:70%">
 
-    <h3> 위치 정보 </h3>
-    <img src="data:image/png;base64,${mapImage}" alt="지도 이미지">
+    <div class="wrapper">
+        <div class="map">
+            <h3> 위치 정보 </h3>
+            <img src="data:image/png;base64,${mapImage}" alt="지도 이미지">
+        </div>
 
-    <h3> 리뷰리스트</h3>
+        <div class="reviews">
+
+
+            <h3> 최근 리뷰 </h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>리뷰 제목</th>
+                    <th>리뷰 별점</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:if test="${empty review}">
+                    <tr>
+                        <td colspan="5">No data available</td>
+                    </tr>
+                </c:if>
+                <c:forEach items="${review}" var="diner" varStatus="status">
+                    <tr>
+                        <td>${review.name}</td>
+                        <td>${review.address}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
 
 
 

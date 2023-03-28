@@ -8,9 +8,9 @@ public class Review {
 
     private int userId;
     private String email;
-    private int tableId;
-    private String tableName;
-    private String targetName;
+    private int tableId; // item id
+    private String tableName; // 테이블 명
+    private String targetName; // item 이름
     private String subject;
     private String contents;
     private int stars;
