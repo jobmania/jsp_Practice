@@ -75,12 +75,12 @@ public class ReviewService {
 
         try {
             Connection con = dbConnect.getCon();
-            String sql = "UPDATE user_review SET subject = ?, review = ?, stars =? WHERE id = "+ reviewId ;
+            String sql = "UPDATE user_review SET subject = ?, review = ?, stars =? WHERE id = " + reviewId;
 
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1,subject);
-            pstmt.setString(2,content);
-            pstmt.setInt(3,Integer.parseInt(stars));
+            pstmt.setString(1, subject);
+            pstmt.setString(2, content);
+            pstmt.setInt(3, Integer.parseInt(stars));
             pstmt.executeUpdate();
 
             dbConnect.closeAll(null, pstmt, con);
@@ -125,8 +125,23 @@ public class ReviewService {
             //https://blog.outsider.ne.kr/266
 
 
-            String sql = "SELECT *, user.email AS email FROM USER_REVIEW INNER JOIN user " +
-                    "ON user_review.user_id = user.id ORDER BY " + sort + " DESC LIMIT ?,10 ";
+
+            String sql = "SELECT user_review.*, user.email, " +
+                    " CASE " +
+                    " WHEN user_review.table_name = 'diner' THEN diner.name " +
+                    " WHEN user_review.table_name = 'cafe' THEN cafe.name " +
+                    " WHEN user_review.table_name = 'hall' THEN hall.name " +
+                    " WHEN user_review.table_name = 'gym' THEN gym.name " +
+                    " WHEN user_review.table_name = 'library' THEN library.name " +
+                    " END AS name " +
+                    " FROM user_review " +
+                    " INNER JOIN user ON user_review.user_id = user.id " +
+                    " LEFT JOIN diner ON user_review.table_id = diner.id AND user_review.table_name = 'diner' " +
+                    " LEFT JOIN cafe ON user_review.table_id = cafe.id AND user_review.table_name = 'cafe' " +
+                    " LEFT JOIN hall ON user_review.table_id = hall.id AND user_review.table_name = 'hall' " +
+                    " LEFT JOIN gym ON user_review.table_id = gym.id AND user_review.table_name = 'gym' " +
+                    " LEFT JOIN library ON user_review.table_id = library.id AND user_review.table_name = 'library' " +
+                    " ORDER BY " + sort + " DESC LIMIT ?,10;";
 
 
             pstmt = con.prepareStatement(sql);
@@ -145,9 +160,10 @@ public class ReviewService {
                 String contents = rs.getString("review"); // 리뷰내용
                 int stars = rs.getInt("stars");
                 String board_target = rs.getString("table_name");
+                String targetName = rs.getString("name");
 
                 Review review = new Review(review_id, user_id, email, board_id, board_target
-                        , subject, contents, stars, reg_date, mod_date);
+                        , targetName, subject, contents, stars, reg_date, mod_date);
 
                 reviewList.add(review);
             }
@@ -167,9 +183,22 @@ public class ReviewService {
 
         try {
             Connection con = dbConnect.getCon();
-            String sql = "SELECT user_review.*, user.email AS email " +
-                    " FROM USER_REVIEW " +
+
+            String sql = "SELECT user_review.*, user.email, " +
+                    " CASE " +
+                    " WHEN user_review.table_name = 'diner' THEN diner.name " +
+                    " WHEN user_review.table_name = 'cafe' THEN cafe.name " +
+                    " WHEN user_review.table_name = 'hall' THEN hall.name " +
+                    " WHEN user_review.table_name = 'gym' THEN gym.name " +
+                    " WHEN user_review.table_name = 'library' THEN library.name " +
+                    " END AS name " +
+                    " FROM user_review " +
                     " INNER JOIN user ON user_review.user_id = user.id " +
+                    " LEFT JOIN diner ON user_review.table_id = diner.id AND user_review.table_name = 'diner' " +
+                    " LEFT JOIN cafe ON user_review.table_id = cafe.id AND user_review.table_name = 'cafe' " +
+                    " LEFT JOIN hall ON user_review.table_id = hall.id AND user_review.table_name = 'hall' " +
+                    " LEFT JOIN gym ON user_review.table_id = gym.id AND user_review.table_name = 'gym' " +
+                    " LEFT JOIN library ON user_review.table_id = library.id AND user_review.table_name = 'library'" +
                     "  WHERE user_review.ID = " + reviewId;
 
 
@@ -187,12 +216,12 @@ public class ReviewService {
                 String contents = rs.getString("review"); // 리뷰내용
                 int stars = rs.getInt("stars");
                 String board_target = rs.getString("table_name");
+                String targetName = rs.getString("name");
 
-                review.update(review_id, user_id, email, board_id, board_target
-                        , subject, contents, stars, reg_date, mod_date);
+                review.update(review_id, user_id, email, board_id, board_target,
+                        targetName, subject, contents, stars, reg_date, mod_date);
             }
 
-          
 
             dbConnect.closeAll(rs, pstmt, con);
         } catch (SQLException e) {
@@ -205,7 +234,7 @@ public class ReviewService {
 
         try {
             Connection con = dbConnect.getCon();
-            String sql = "DELETE FROM user_review WHERE id = "+ reviewId;
+            String sql = "DELETE FROM user_review WHERE id = " + reviewId;
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.executeUpdate();
 

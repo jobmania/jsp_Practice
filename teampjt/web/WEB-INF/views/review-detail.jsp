@@ -31,6 +31,11 @@
                     </tr>
 
                     <tr>
+                        <td>업체 이름</td>
+                        <td> ${review.targetName}</td>
+                    </tr>
+
+                    <tr>
                         <td>작성자</td>
                         <td> ${review.email}</td>
 
@@ -52,15 +57,13 @@
                         <td colspan="2"  class="text-center">
 
 
-
-
-                            <input type="button"  class="btn btn-primary" onclick="location.href='/review'" value="리뷰 글보기">
-                            <% String loginUsername = (String) request.getSession().getAttribute("username");
-                                Review review = (Review) request.getAttribute("review");
-                                String writtenUsername = review.getEmail();
-                               if(loginUsername != null && loginUsername.equals(writtenUsername)){
-                                  %>
-                        <a class="btn btn-primary" href="/review/write/<%=review.getId()%>">리뷰 수정하기</a>
+                    <input type="button"  class="btn btn-primary" onclick="location.href='/review'" value="리뷰 글보기">
+                    <% String loginUsername = (String) request.getSession().getAttribute("username");
+                        Review review = (Review) request.getAttribute("review");
+                        String writtenUsername = review.getEmail();
+                   if(loginUsername != null && loginUsername.equals(writtenUsername)){
+                          %>
+                    <a class="btn btn-primary" href="/review/write/<%=review.getId()%>">리뷰 수정하기</a>
                             <form method="post" action="/delete/<%=review.getId()%>">
                                 <button type="submit" class="btn btn-primary">리뷰 삭제하기</button>
                             </form>

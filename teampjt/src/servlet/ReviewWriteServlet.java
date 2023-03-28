@@ -60,7 +60,7 @@ public class ReviewWriteServlet extends HttpServlet {
         String content = request.getParameter("content"); // 리뷰내용
 
 
-        if (pathInfo == null) {
+        if (pathInfo == null) {// 새로 작성
             String username = (String) request.getSession().getAttribute("username");
             String boardId = request.getParameter("board_id"); // 게시글 아이디
             String boardTarget = request.getParameter("board_target"); // 게시판 항목
@@ -78,7 +78,7 @@ public class ReviewWriteServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
             }
 
-        } else { // 수정
+        } else { // 글 수정
             String reviewId = pathInfo.substring(1);
             System.out.println(reviewId);
             boolean checkUpdating = reviewService.updateReview(reviewId, subject, stars, content);

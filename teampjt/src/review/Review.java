@@ -10,6 +10,7 @@ public class Review {
     private String email;
     private int tableId;
     private String tableName;
+    private String targetName;
     private String subject;
     private String contents;
     private int stars;
@@ -22,13 +23,14 @@ public class Review {
 
 
     public Review(int id, int userId, String email, int tableId, String tableName,
-                  String subject, String contents, int stars,
+                  String targetName, String subject, String contents, int stars,
                   Date reg_date, Date mod_date) {
         this.id = id;
         this.userId = userId;
         this.email = email;
         this.tableId = tableId;
         this.tableName = tableName;
+        this.targetName = targetName;
         this.subject = subject;
         this.contents = contents;
         this.stars = stars;
@@ -37,13 +39,14 @@ public class Review {
     }
 
     public void update(int id, int userId, String email, int tableId, String tableName,
-                       String subject, String contents, int stars,
+                       String targetName, String subject, String contents, int stars,
                        Date reg_date, Date mod_date){
         this.id = id;
         this.userId = userId;
         this.email = email;
         this.tableId = tableId;
         this.tableName = tableName;
+        this.targetName = targetName;
         this.subject = subject;
         this.contents = contents;
         this.stars = stars;
@@ -52,7 +55,13 @@ public class Review {
     }
 
 
+    public String getTargetName() {
+        return targetName;
+    }
 
+    public void setTargetName(String targetName) {
+        this.targetName = targetName;
+    }
 
     public String getEmail() {
         return email;

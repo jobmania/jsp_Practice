@@ -49,6 +49,7 @@
     <tr>
       <th>번호</th>
       <th>게시글 제목</th>
+      <th>업체이름</th>
       <th>종류</th>
       <th>등록날짜</th>
       <th>평점</th>
@@ -67,6 +68,7 @@
       <tr>
         <td>${(sendPageNum - 1) * 10 + status.index + 1}</td>
         <td>${review.subject}</td>
+        <td><a href="/"></a>${review.targetName}</td>
         <td>${review.tableName}</td>
         <td>${review.reg_date}</td>
         <td>${review.stars}</td>
