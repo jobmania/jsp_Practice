@@ -51,15 +51,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:if test="${empty review}">
+                <c:if test="${empty reviews}">
                     <tr>
                         <td colspan="5">No data available</td>
                     </tr>
                 </c:if>
-                <c:forEach items="${review}" var="diner" varStatus="status">
+
+                <c:forEach items="${reviews}" var="review" varStatus="status">
                     <tr>
-                        <td>${review.name}</td>
-                        <td>${review.address}</td>
+                        <td>${review.subject}</td>
+                        <td><c:forEach begin="1" end="${review.stars}">
+                            ⭐
+                        </c:forEach></td>
                     </tr>
                 </c:forEach>
                 </tbody>

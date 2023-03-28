@@ -177,6 +177,47 @@ public class ReviewService {
 
     }
 
+    public List<Review> getReviewsAboutTarget(int id,String tableName) {
+        List<Review> reviewList = new ArrayList<>();
+        try {
+            Connection con = dbConnect.getCon();
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+            String sql = "SELECT * FROM user_review WHERE table_id = ? AND table_name = ? " +
+                    " ORDER BY reg_date DESC LIMIT 0, 5";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            pstmt.setString(2, tableName);
+
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int review_id = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                int board_id = rs.getInt("table_id");
+                String email = "";  // 필요없는정보 임의로 처리
+                Date reg_date = rs.getDate("reg_date");
+                Date mod_date = rs.getDate("mod_date");
+                String subject = rs.getString("subject");
+                String contents = rs.getString("review"); // 리뷰내용
+                int stars = rs.getInt("stars");
+                String board_target = rs.getString("table_name");
+                String targetName = "";  // 필요없는정보 임의로 처리
+
+                Review review = new Review(review_id, user_id, email, board_id, board_target
+                        , targetName, subject, contents, stars, reg_date, mod_date);
+
+                reviewList.add(review);
+            }
+
+
+            dbConnect.closeAll(rs, pstmt, con);
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return reviewList;
+    }
+
     public Review getReview(String reviewId) {
 
         Review review = new Review();

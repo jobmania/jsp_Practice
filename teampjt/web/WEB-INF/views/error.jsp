@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>여기는 에러 총괄 표시 페이지 ! </h1>
+<h1>여기는 에러 표시 페이지 ! </h1>
 <h1>${fail}</h1>
 </body>
 </html>
