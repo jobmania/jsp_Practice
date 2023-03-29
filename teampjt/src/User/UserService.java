@@ -49,13 +49,14 @@ public class UserService {
                 dbConnect.closeAll(rs, pstmt, con);
                 return "중복된 이름";
             }else {
-                String insertSql = "INSERT INTO USER(email,password, createTime) VALUES (?,?,?)";
+                String insertSql = "INSERT INTO USER(email,password, createTime, ROLE) VALUES (?,?,?,?)";
                 PreparedStatement pstmt2 = null;
 
                 pstmt2 = con.prepareStatement(insertSql);
                 pstmt2.setString(1,email);
                 pstmt2.setString(2,password);
                 pstmt2.setDate(3, Date.valueOf(LocalDate.now()));
+                pstmt2.setString(4, "user");
                 pstmt2.executeUpdate();
                 dbConnect.closeAll(rs, pstmt2, con);
                 return "ok";

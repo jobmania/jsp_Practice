@@ -25,7 +25,7 @@ public class ReviewServlet extends HttpServlet {
         String sort = getSort(request);
         String pathInfo = request.getPathInfo();
 
-        
+        // pathvaluable
         if(pathInfo==null){
             int totalCount = reviewService.getCount();
             List<Review> pageReview = reviewService.getPageAllReview(page, sort);

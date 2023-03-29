@@ -19,16 +19,9 @@
 
     <h1> 홈화면</h1>
     <h2>  ${username} hello! </h2>
-<%--    <br>--%>
-<%--    <%--%>
-<%--        if (request.getSession().getAttribute("username") == null) {--%>
-<%--            out.write("<a href=\"login\">로그인</a>");--%>
-<%--        } else {--%>
-<%--            out.write("<a href=\"logout\">로그아웃</a>");--%>
-<%--        }--%>
-<%--    %>--%>
-<%--    <br>--%>
-    <img src="https://velog.velcdn.com/images/heelieben/post/3c15c708-c5b2-404e-858e-138241e90d77/image.png" width="30%">
+
+    <img src="/images/spring.png" width="30%">
+
 </div>
 
 </body>

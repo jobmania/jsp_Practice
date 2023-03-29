@@ -21,6 +21,7 @@
         <font color="black">${ok==null?"":"회원가입완료"}</font>
 
       </p>
+      <div class="form-floating mb-3">
       <label for="floatingInput">Email address</label>
       <input class="form-control" id="floatingInput" type="email" name="username"/> <br>
       <label for="floatingPassword">Password</label>
