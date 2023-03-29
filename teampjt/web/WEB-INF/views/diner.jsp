@@ -104,6 +104,9 @@
                 <% } %>
 
                 <% for (int i = startPage; i <= endPage; i++) {
+                    if(i<1){
+                        continue;
+                    }
                     if (i == currentPage) { %>
                 <li class="page-item active"><a class="page-link" href="/diner?page=<%= i %>"><%= i %></a></li>
                 <% } else { %>
@@ -112,7 +115,7 @@
                 <% } %>
 
 
-                <% if (currentPage != totalPages) { %>
+                <% if (currentPage != totalPages && totalPages!=0 ) { %>
                 <li class="page-item"><a class="page-link" href="/diner?page=<%= currentPage+1 %>">next</a></li>
                 <% } %>
             </ul>
