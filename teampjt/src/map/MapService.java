@@ -56,8 +56,10 @@ public class MapService {
             x = addresses.getX();
             y = addresses.getY();
         }
-
-        return map.getAddresses().get(0);
+       if(map.getAddresses().size()!=0){
+           return map.getAddresses().get(0);
+       }
+        return null;
 
     }
 

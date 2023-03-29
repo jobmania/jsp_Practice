@@ -37,30 +37,34 @@ public class MapServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
         }
 
+        try {
 
-        Addresses findAddress = mapService.getMap(address);
-        Image mapImg = mapService.getMapImg(findAddress.getX(), findAddress.getY(),address);
-
-
-
-
-        // Image를 BufferedImage로 변환
-        BufferedImage bufferedImage = (BufferedImage) mapImg;
-        // BufferedImage를 base64로 인코딩
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "png", baos);
-        baos.flush();
-        byte[] imageInByte = baos.toByteArray();
-        baos.close();
-        String base64Encoded = Base64.getEncoder().encodeToString(imageInByte);
+            Addresses findAddress = mapService.getMap(address);
+            Image mapImg = mapService.getMapImg(findAddress.getX(), findAddress.getY(),address);
 
 
-        request.setAttribute("diner", dinerService.getOneDiner(address));
-        request.setAttribute("reviews",reviewService.getReviewsAboutTarget(id,tableName));
-        request.setAttribute("mapImage",base64Encoded);
+            // Image를 BufferedImage로 변환
+            BufferedImage bufferedImage = (BufferedImage) mapImg;
+            // BufferedImage를 base64로 인코딩
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", baos);
+            baos.flush();
+            byte[] imageInByte = baos.toByteArray();
+            baos.close();
+            String base64Encoded = Base64.getEncoder().encodeToString(imageInByte);
 
 
-        request.getRequestDispatcher("/WEB-INF/views/diner-detail.jsp").forward(request,response);
+            request.setAttribute("diner", dinerService.getOneDiner(address));
+            request.setAttribute("reviews",reviewService.getReviewsAboutTarget(id,tableName));
+            request.setAttribute("mapImage",base64Encoded);
+
+
+            request.getRequestDispatcher("/WEB-INF/views/diner-detail.jsp").forward(request,response);
+        }catch (NullPointerException e){
+            request.setAttribute("fail", "네이버 서버 오류(올바른 주소를 불러오지 못함)");
+            request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request,response);
+        }
+
     }
 
 
