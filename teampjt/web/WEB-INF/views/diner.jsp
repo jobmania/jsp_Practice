@@ -44,8 +44,6 @@
         <button type="submit" class="ico_16px search">Search</button>
     </form>
 
-    <%--    ajax 검색창 --%>
-
 
 
     <%-- 테이블 --%>
@@ -87,9 +85,9 @@
             <ul class="pagination">
                 <%  int totalPages = (int) request.getAttribute("totalPages");
                     int currentPage = (int) request.getAttribute("sendPageNum");
-                    int startPage = currentPage - 2; // 시작되는 버튼이 표시될 페이지
-                    int endPage = currentPage + 2; // 끝나는 버튼이 표시될 페이지
-                    // 1,2 경우
+                    int startPage = currentPage - 4; // 시작되는 버튼이 표시될 페이지
+                    int endPage = currentPage + 5; // 끝나는 버튼이 표시될 페이지
+                    // 1,2,3,4 경우
                     if (startPage < 1) {
                         endPage += Math.abs(startPage) + 1;
                         startPage = 1;
