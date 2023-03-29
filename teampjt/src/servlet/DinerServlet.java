@@ -46,12 +46,12 @@ public class DinerServlet extends HttpServlet {
         */
 
 
-        // 총 페이지 갯수 !
+        // 총 페이지 갯수 ! -> 15페이지
         int totalPages = (int) Math.ceil((double) totalCount / 10);
 
         request.setAttribute("totalPages",totalPages);
         request.setAttribute("diners", pageDiners);
-        request.setAttribute("sendPageNum",page+1);
+        request.setAttribute("sendPageNum",page+1); // 현재 페이지
         request.getRequestDispatcher("/WEB-INF/views/diner.jsp").forward(request,response);
 
     }
