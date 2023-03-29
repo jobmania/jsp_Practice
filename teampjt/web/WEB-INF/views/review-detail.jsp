@@ -9,8 +9,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -73,16 +74,17 @@
                         <td colspan="2"  class="text-center">
 
 
-                    <input type="button"  class="btn btn-primary" onclick="location.href='/review'" value="리뷰 글보기">
+
+                    <a class="btn btn-primary" href="/review">리뷰 글보기</a>
                     <% String loginUsername = (String) request.getSession().getAttribute("username");
                         Review review = (Review) request.getAttribute("review");
                         String writtenUsername = review.getEmail();
                    if(loginUsername != null && loginUsername.equals(writtenUsername)){
                           %>
-                    <a class="btn btn-primary" href="/review/write/<%=review.getId()%>">리뷰 수정하기</a>
-                            <form method="post" action="/delete/<%=review.getId()%>">
-                                <button type="submit" class="btn btn-primary">리뷰 삭제하기</button>
-                            </form>
+                    <a class="btn btn-primary" href="/review/write/<%=review.getId()%>" >리뷰 수정하기</a>
+                    <form method="post" action="/delete/<%=review.getId()%>" class="d-inline-block">
+                        <button type="submit" class="btn btn-primary">리뷰 삭제하기</button>
+                    </form>
                         <% } %>
 
 

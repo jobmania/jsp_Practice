@@ -20,12 +20,12 @@
 </head>
 <body>
 <%@ include file="../common/navigation.jspf"%>
-<h1> 음식 추천 정보 </h1>
 
 
 <div class="container" style="width:70%">
+    <h1> 음식점 게시판 </h1>
 
-    <%--   검색창   --%>
+<%--   검색창   --%>
     <form id="searchBar" action="/diner/search" method="get">
         <span class="btn_img itx_wrp">
             <label for="search_keyword">검색</label>

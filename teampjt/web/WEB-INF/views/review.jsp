@@ -17,13 +17,13 @@
 </head>
 <body>
 <%@ include file="../common/navigation.jspf"%>
-<h1> 전체 리뷰!  </h1>
-<a class="btn btn-primary" href="/home"> 홈으로 </a>
+
 
 
 
 <div class="container" style="width:70%">
 
+  <h1> 전체 리뷰페이지  </h1>
 
   <%--   sort창   --%>
   <form id="searchBar" action="/review" method="get">

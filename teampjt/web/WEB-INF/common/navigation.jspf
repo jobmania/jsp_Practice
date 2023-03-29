@@ -6,28 +6,53 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java"   pageEncoding="UTF-8"%>
-<nav class="navbar navbar-default">
-  <div class="container">
+<nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd;">
+  <div class="container-fluid">
     <a href="/home" class="navbar-brand">😎</a>
 
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/home">Home</a></li>
-      <li><a href="/diner">음식점게시판</a></li>
-      <li><a href="/review">리뷰게시판</a></li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <ul class="nav navbar-nav navbar-right">
-      <%
-        if (session.getAttribute("username") == null) {
-      %>
-      <li><a href="/login">로그인</a></li>
-      <%
-      } else {
-      %>
-      <li><a href="/logout"><%=request.getSession().getAttribute("username")%> 로그아웃</a></li>
-      <%
-        }
-      %>
-    </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            게시판 목록
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/diner">음식점게시판</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+          </ul>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="/review">리뷰게시판</a>
+        </li>
+
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <%
+          if (session.getAttribute("username") == null) {
+        %>
+        <li class="nav-item"><a href="/login" class="nav-link">로그인</a></li>
+        <%
+        } else {
+        %>
+        <li class="nav-item"><a href="/logout" class="nav-link"><%=request.getSession().getAttribute("username")%> 로그아웃</a></li>
+        <%
+          }
+        %>
+      </ul>
+
+    </div>
   </div>
 </nav>
+

@@ -29,10 +29,9 @@
 </head>
 <body>
 <%@ include file="../common/navigation.jspf"%>
-<h1> 음식 추천 정보 </h1>
-<a class="btn btn-primary" href="home"> 홈으로 </a>
-<div class="container" style="width:70%">
 
+<div class="container" style="width:70%">
+    <h1> 음식 추천 정보 </h1>
     <div class="wrapper">
         <div class="map">
             <h3> 위치 정보 </h3>
