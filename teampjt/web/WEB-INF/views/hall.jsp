@@ -30,7 +30,9 @@
             <th>번호</th>
             <th>공연장 이름</th>
             <th>주소</th>
-            <th>전화번호</th>
+            <th>개장일</th>
+            <th>폐관일</th>
+
 
         </tr>
         </thead>
@@ -47,7 +49,8 @@
                 <td>${(sendPageNum - 1) * 10 + status.index + 1}</td>
                 <td>${hall.name}</td>
                 <td>${hall.address}</td>
-                <td>${hall.phone_num}</td>
+                <td>${hall.openDate}</td>
+                <td>${hall.closeDate}</td>
                 <td><a class="btn btn-primary" href="/map?address=${hall.address}&id=${hall.id}&board=hall">상세 보기</a></td>
             </tr>
         </c:forEach>

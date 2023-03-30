@@ -71,7 +71,7 @@
 <%@ include file="../common/navigation.jspf"%>
 
 <div class="container" style="width:70%">
-  <h1> 음식 추천 정보 </h1>
+  <h1> 카페 추천 정보 </h1>
   <div class="wrapper">
     <div class="map">
       <h3> 위치 정보 </h3>

@@ -1,70 +1,114 @@
 package hall;
 
+import java.sql.Date;
+
 public class Hall {
 
-	private Integer hallID;
-	private String city;
-	private String country;
+	private int id;
+	private String region; // 지역
+	private String type;  // 종류
+	private String name;
+	private Date openDate;
+	private Date closeDate;
+	private String price;
 	private String address;
-	private String hallName;
-	private String openDate;
-	private String num;
-	
-	public Hall(Integer hallID, String city, String country, String address, String hallName, String openDate, String num) {
-		this.hallID = hallID;
-		this.city = city;
-		this.country = country;
-		this.address = address;
-		this.hallName = hallName;
+	private String phoneNum;
+	private String homepage;
+
+	public Hall(){
+	}
+
+	public Hall(int id, String region, String type, String name, Date openDate, Date closeDate, String price, String address, String phoneNum, String homepage) {
+		this.id = id;
+		this.region = region;
+		this.type = type;
+		this.name = name;
 		this.openDate = openDate;
-		this.num = num;
-	}
-	
-	public Integer getHallID() {
-		return hallID;
-	}
-	public void setHallID(Integer hallID) {
-		this.hallID = hallID;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
+		this.closeDate = closeDate;
+		this.price = price;
 		this.address = address;
+		this.phoneNum = phoneNum;
+		this.homepage = homepage;
 	}
-	public String getHallName() {
-		return hallName;
+
+
+	public int getId() {
+		return id;
 	}
-	public void setHallName(String hallName) {
-		this.hallName = hallName;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	
-	public String getOpenDate() {
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getOpenDate() {
 		return openDate;
 	}
 
-	public void setOpenDate(String openDate) {
+	public void setOpenDate(Date openDate) {
 		this.openDate = openDate;
 	}
 
-	public String getNum() {
-		return num;
+	public Date getCloseDate() {
+		return closeDate;
 	}
-	public void setNum(String num) {
-		this.num = num;
+
+	public void setCloseDate(Date closeDate) {
+		this.closeDate = closeDate;
 	}
-	
-	
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhoneNum() {
+		return phoneNum;
+	}
+
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+
+	public String getHomepage() {
+		return homepage;
+	}
+
+	public void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
 }

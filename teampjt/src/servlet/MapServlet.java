@@ -2,6 +2,8 @@ package servlet;
 
 import cafe.CafeService;
 import diner.DinerService;
+import hall.Hall;
+import hall.HallService;
 import map.Addresses;
 import map.MapService;
 import review.ReviewService;
@@ -24,6 +26,7 @@ public class MapServlet extends HttpServlet {
     MapService mapService = new MapService();
     DinerService dinerService = new DinerService();
     CafeService cafeService = new CafeService();
+    HallService hallService = new HallService();
     ReviewService reviewService = new ReviewService();
 
     @Override
@@ -68,6 +71,11 @@ public class MapServlet extends HttpServlet {
                 case "cafe":
                     request.setAttribute("cafe", cafeService.getOneCafe(address));
                     request.getRequestDispatcher("/WEB-INF/views/cafe-detail.jsp").forward(request,response);
+                    break;
+                case "hall":
+
+                    request.setAttribute("hall", hallService.getOneHall(address));
+                    request.getRequestDispatcher("/WEB-INF/views/hall-detail.jsp").forward(request,response);
                     break;
             }
 
