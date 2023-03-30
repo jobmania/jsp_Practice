@@ -1,5 +1,8 @@
 # jsp_Practice!
 
+JSP, MYSQL, Tomcat Server, Sevlet
+
+
 
 ## ERD_1차
 
