@@ -45,24 +45,26 @@ public class MapServlet extends HttpServlet {
         try {
 
             Addresses findAddress = mapService.getMap(address);
-            Image mapImg = mapService.getMapImg(findAddress.getX(), findAddress.getY(),address);
 
+            if(findAddress!=null){
 
-            // Image를 BufferedImage로 변환
-            BufferedImage bufferedImage = (BufferedImage) mapImg;
-            // BufferedImage를 base64로 인코딩
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bufferedImage, "png", baos);
-            baos.flush();
-            byte[] imageInByte = baos.toByteArray();
-            baos.close();
-            String base64Encoded = Base64.getEncoder().encodeToString(imageInByte);
+                Image mapImg = mapService.getMapImg(findAddress.getX(), findAddress.getY(),address);
 
+                // Image를 BufferedImage로 변환
+                BufferedImage bufferedImage = (BufferedImage) mapImg;
+                // BufferedImage를 base64로 인코딩
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(bufferedImage, "png", baos);
+                baos.flush();
+                byte[] imageInByte = baos.toByteArray();
+                baos.close();
+                String base64Encoded = Base64.getEncoder().encodeToString(imageInByte);
 
+                request.setAttribute("mapImage",base64Encoded);
+
+            }
 
             request.setAttribute("reviews",reviewService.getReviewsAboutTarget(id,tableName));
-            request.setAttribute("mapImage",base64Encoded);
-
             switch (tableName){
                 case "diner":
                     request.setAttribute("diner", dinerService.getOneDiner(address));

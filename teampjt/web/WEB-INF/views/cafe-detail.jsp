@@ -25,6 +25,13 @@
       flex-basis: 50%;
       padding: 10px;
     }
+
+    .map img {
+      width: 100%; /* 이미지의 가로 너비를 100%로 설정합니다. */
+      height: 500px; /* 이미지의 세로 높이를 200px로 설정합니다. */
+      object-fit: contain; /* 이미지를 가득 채우도록 설정합니다. */
+    }
+
     #subject{
       position: center;
       text-align: center;
@@ -75,7 +82,7 @@
   <div class="wrapper">
     <div class="map">
       <h3> 위치 정보 </h3>
-      <img src="data:image/png;base64,${mapImage}" alt="지도 이미지">
+      <img src="data:image/png;base64,${mapImage}" alt="지도 이미지" onerror="this.onerror=null;this.src='/images/placeholder.png';">
     </div>
 
     <div class="reviews">

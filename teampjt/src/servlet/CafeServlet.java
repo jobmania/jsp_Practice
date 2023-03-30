@@ -24,13 +24,9 @@ public class CafeServlet extends HttpServlet {
 
         int totalCount = cafeService.getCount();
         List<Cafe> pageCafes = cafeService.getPageCafes(page);
-
-
+        
         // 총 페이지 갯수 ! -> 15페이지
         int totalPages = (int) Math.ceil((double) totalCount / 10);
-        System.out.println(pageCafes.size());
-        System.out.println(totalCount);
-        System.out.println(totalPages);
 
         request.setAttribute("totalPages",totalPages);
         request.setAttribute("cafes", pageCafes);
