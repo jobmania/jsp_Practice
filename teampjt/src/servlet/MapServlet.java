@@ -1,5 +1,6 @@
 package servlet;
 
+import cafe.CafeService;
 import diner.DinerService;
 import map.Addresses;
 import map.MapService;
@@ -22,13 +23,14 @@ public class MapServlet extends HttpServlet {
 
     MapService mapService = new MapService();
     DinerService dinerService = new DinerService();
+    CafeService cafeService = new CafeService();
     ReviewService reviewService = new ReviewService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String address = request.getParameter("address");
         int id = Integer.parseInt(request.getParameter("id"));
-        String tableName = request.getParameter("table");
+        String tableName = request.getParameter("board");
 
         // tableName 유효성
         if(!tableName.equals("diner")&&!tableName.equals("hall")&&!tableName.equals("gym")
@@ -54,12 +56,22 @@ public class MapServlet extends HttpServlet {
             String base64Encoded = Base64.getEncoder().encodeToString(imageInByte);
 
 
-            request.setAttribute("diner", dinerService.getOneDiner(address));
+
             request.setAttribute("reviews",reviewService.getReviewsAboutTarget(id,tableName));
             request.setAttribute("mapImage",base64Encoded);
 
+            switch (tableName){
+                case "diner":
+                    request.setAttribute("diner", dinerService.getOneDiner(address));
+                    request.getRequestDispatcher("/WEB-INF/views/diner-detail.jsp").forward(request,response);
+                    break;
+                case "cafe":
+                    request.setAttribute("cafe", cafeService.getOneCafe(address));
+                    request.getRequestDispatcher("/WEB-INF/views/cafe-detail.jsp").forward(request,response);
+                    break;
+            }
 
-            request.getRequestDispatcher("/WEB-INF/views/diner-detail.jsp").forward(request,response);
+
         }catch (NullPointerException e){
             request.setAttribute("fail", "네이버 서버 오류(올바른 주소를 불러오지 못함)");
             request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request,response);

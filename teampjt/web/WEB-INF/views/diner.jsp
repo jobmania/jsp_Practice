@@ -74,7 +74,7 @@
                 <td>${diner.address}</td>
                 <td>${diner.phone_num}</td>
                 <td>${diner.dish}</td>
-                <td><a class="btn btn-primary" href="/map?address=${diner.address}&id=${diner.id}&table=diner">상세 보기</a></td>
+                <td><a class="btn btn-primary" href="/map?address=${diner.address}&id=${diner.id}&board=diner">상세 보기</a></td>
             </tr>
         </c:forEach>
         </tbody>

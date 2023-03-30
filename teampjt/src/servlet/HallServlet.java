@@ -17,7 +17,7 @@ public class HallServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("halls", hallService.getHalls());
+
 		request.getRequestDispatcher("/WEB-INF/views/hall.jsp").forward(request, response);
 	}
 
