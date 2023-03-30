@@ -65,10 +65,20 @@ public class ReviewWriteServlet extends HttpServlet {
         }
 
 
+
+
         if (pathInfo == null) {// 새로 작성
             String username = (String) request.getSession().getAttribute("username");
+
+
             String boardId = request.getParameter("board_id"); // 게시글 아이디
             String boardTarget = request.getParameter("board_target"); // 게시판 항목
+//
+//            // 예외 check????
+//            if(!boardTarget.equals("diner")){
+//                request.setAttribute("fail", "잘못된 경로로 접근.");
+//                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+//            }
 
 
             boolean checkWriting = reviewService.writeReview(username, subject, boardId, boardTarget, stars, content);

@@ -3,15 +3,16 @@
 <html>
 <head>
 
-  <title> 로그인 페이지 </title>
+  <title> Login </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <%@ include file="../common/style.jspf"%>
 </head>
 
 
-  <body class="text-center">
+  <body>
   <%@ include file="../common/navigation.jspf"%>
 <%-- 추가적으로 ajax 구현--%>
 
@@ -33,10 +34,11 @@
       </div>
 
       <br>
-      <input class="form-control" type="submit" value="로그인">
+      <input class="form-control" type="submit" value="로그인" style="width: 30%;">
 
     </form>
-    <a href="/signup">회원가입</a>
+    <button type="button" class="btn btn-outline-success" onclick="location.href='/signup'">회원가입</button>
+    <%@ include file="../common/footer.jspf"%>
   </div>
 
 

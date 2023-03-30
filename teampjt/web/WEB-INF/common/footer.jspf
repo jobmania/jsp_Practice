@@ -6,8 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%--바디 안에 작성 --%>
-
+<%@ page language="java"   pageEncoding="UTF-8"%>
 <footer class="footer">
-  <div>footer content</div>
+  <nav>
+    <a href='https://velog.io/@jobmania' target='_blank'>Blog</a> |
+    <a href='https://github.com/jobmania' target='_blank'>Github</a>
+  </nav>
+  <p>
+    <span>저자 : jobmania</span><br/>
+    <span>이메일 : xzxz7003@naver.com</span><br/>
+    <span>Copyright 2023. jobmania. All Rights Reserved.</span>
+  </p>
 </footer>
 
