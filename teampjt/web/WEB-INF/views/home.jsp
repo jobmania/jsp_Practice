@@ -82,20 +82,23 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"  style="width: 50%; max-width: 50%;">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="/diner"><img src="/images/spring.png" class="d-block w-100" alt="..."></a>
+                <a href="/diner"><img src="/images/diner.png" class="d-block w-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <a href="/cafe"><img src="/images/docker.png" class="d-block w-100" alt="..."></a>
+                <a href="/cafe"><img src="/images/cafe.png" class="d-block w-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <a href="/hall"><img src="/images/git.png" class="d-block w-100" alt="..."></a>
+                <a href="/hall"><img src="/images/hall.png" class="d-block w-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <a href="/library"><img src="/images/aws.png" class="d-block w-100" alt="..."></a>
+                <a href="/library"><img src="/images/library.png" class="d-block w-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <a href="/gym"><img src="/images/html.png" class="d-block w-100" alt="..."></a>
+                <a href="/gym"><img src="/images/gym.png" class="d-block w-100" alt="..."></a>
             </div>
+            <div class="carousel-item">
+            <a href="/review"><img src="/images/review.png" class="d-block w-100" alt="..."></a>
+        </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
