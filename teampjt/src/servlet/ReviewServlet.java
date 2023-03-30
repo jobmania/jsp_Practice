@@ -23,12 +23,13 @@ public class ReviewServlet extends HttpServlet {
 
         int page = getPage(request);
         String sort = getSort(request);
+        String boardType = getBoard(request);
         String pathInfo = request.getPathInfo();
 
         // pathvaluable
         if(pathInfo==null){
-            int totalCount = reviewService.getCount();
-            List<Review> pageReview = reviewService.getPageAllReview(page, sort);
+            int totalCount = reviewService.getCount(boardType);
+            List<Review> pageReview = reviewService.getPageAllReview(page, sort, boardType);
 
             int totalPages = (int) Math.ceil((double) totalCount / 10);
 
@@ -36,6 +37,7 @@ public class ReviewServlet extends HttpServlet {
             request.setAttribute("pageReview", pageReview);
             request.setAttribute("sendPageNum", page + 1);
             request.setAttribute("sort",sort);
+            request.setAttribute("board",boardType);
             request.getRequestDispatcher("/WEB-INF/views/review.jsp").forward(request,response);
         } else {
             //   pathInfo = "/22" 형식으로 들어온다.
@@ -76,4 +78,13 @@ public class ReviewServlet extends HttpServlet {
         }
         return sort;
     }
+
+    private String getBoard(HttpServletRequest request) {
+        String board = request.getParameter("board");
+        if(board==null){
+            board = this.getInitParameter("board");
+        }
+        return board;
+    }
+
 }

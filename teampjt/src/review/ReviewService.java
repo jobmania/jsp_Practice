@@ -108,13 +108,36 @@ public class ReviewService {
 
         return true;
     }
-    // 전체 갯수
 
-    public int getCount() {
+    // 전체 갯수
+    public int getCount(String boardType) {
         int count = 0;
         try {
             Connection con = dbConnect.getCon();
-            String sql = "SELECT COUNT(*) FROM USER_REVIEW";
+            String sql = "";
+
+            switch (boardType){
+                case "diner":
+                    sql = "SELECT COUNT(*) FROM USER_REVIEW WHERE diner_id IS NOT NULL ";
+                    break;
+                case "hall":
+                    sql = "SELECT COUNT(*) FROM USER_REVIEW WHERE hall_id IS NOT NULL ";
+                    break;
+                case "library":
+                    sql = "SELECT COUNT(*) FROM USER_REVIEW WHERE library_id IS NOT NULL ";
+                    break;
+                case "cafe":
+                    sql = "SELECT COUNT(*) FROM USER_REVIEW WHERE cafe_id IS NOT NULL ";
+                    break;
+                case "gym":
+                    sql = "SELECT COUNT(*) FROM USER_REVIEW WHERE gym_id IS NOT NULL ";
+                    break;
+                default:
+                    sql = "SELECT COUNT(*) FROM USER_REVIEW";
+                    break;
+            }
+
+
 
             PreparedStatement pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
@@ -131,7 +154,9 @@ public class ReviewService {
 
     }
 
-    public List<Review> getPageAllReview(int page, String sort) {
+
+
+    public List<Review> getPageAllReview(int page, String sort, String boardType) {
         List<Review> reviewList = new ArrayList<>();
 
         try {
@@ -163,17 +188,85 @@ public class ReviewService {
              */
 
             // pk 외래키 사용시
-
-            String sql =" SELECT ur.*, u.email, " +
-                    "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
-                    " FROM USER_REVIEW ur " +
-                    " INNER JOIN user u ON ur.user_id = u.id " +
-                    " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
-                    " LEFT JOIN DINER d ON ur.diner_id = d.id " +
-                    " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
-                    " LEFT JOIN HALL h ON ur.hall_id = h.id " +
-                    " LEFT JOIN GYM g ON ur.gym_id = g.id " +
-                    " ORDER BY " + sort + " DESC LIMIT ?,10;";
+            String sql ="";
+            switch (boardType){
+                case "diner":
+                    sql =" SELECT ur.*, u.email, " +
+                            "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                            " FROM USER_REVIEW ur " +
+                            " INNER JOIN user u ON ur.user_id = u.id " +
+                            " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                            " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                            " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                            " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                            " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                            " WHERE ur.diner_id IS NOT NULL" +
+                            " ORDER BY " + sort + " DESC LIMIT ?,10;";
+                    break;
+                case "cafe":
+                    sql = " SELECT ur.*, u.email, " +
+                            "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                            " FROM USER_REVIEW ur " +
+                            " INNER JOIN user u ON ur.user_id = u.id " +
+                            " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                            " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                            " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                            " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                            " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                            " WHERE ur.cafe_id IS NOT NULL" +
+                            " ORDER BY " + sort + " DESC LIMIT ?,10;";
+                    break;
+                case "hall":
+                    sql = " SELECT ur.*, u.email, " +
+                            "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                            " FROM USER_REVIEW ur " +
+                            " INNER JOIN user u ON ur.user_id = u.id " +
+                            " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                            " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                            " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                            " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                            " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                            " WHERE ur.hall_id IS NOT NULL" +
+                            " ORDER BY " + sort + " DESC LIMIT ?,10;";
+                    break;
+                case "library":
+                    sql = " SELECT ur.*, u.email, " +
+                            "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                            " FROM USER_REVIEW ur " +
+                            " INNER JOIN user u ON ur.user_id = u.id " +
+                            " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                            " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                            " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                            " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                            " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                            " WHERE ur.library_id IS NOT NULL" +
+                            " ORDER BY " + sort + " DESC LIMIT ?,10;";
+                    break;
+                case "gym":
+                    sql = " SELECT ur.*, u.email, " +
+                            "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                            " FROM USER_REVIEW ur " +
+                            " INNER JOIN user u ON ur.user_id = u.id " +
+                            " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                            " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                            " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                            " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                            " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                            " WHERE ur.gym_id IS NOT NULL" +
+                            " ORDER BY " + sort + " DESC LIMIT ?,10;";
+                    break;
+                default:
+                    sql =" SELECT ur.*, u.email, " +
+                            "   COALESCE(c.NAME, d.NAME, l.NAME, h.NAME, g.NAME) as NAME " +
+                            " FROM USER_REVIEW ur " +
+                            " INNER JOIN user u ON ur.user_id = u.id " +
+                            " LEFT JOIN CAFE c ON ur.cafe_id = c.id " +
+                            " LEFT JOIN DINER d ON ur.diner_id = d.id " +
+                            " LEFT JOIN LIBRARY l ON ur.library_id = l.id " +
+                            " LEFT JOIN HALL h ON ur.hall_id = h.id " +
+                            " LEFT JOIN GYM g ON ur.gym_id = g.id " +
+                            " ORDER BY " + sort + " DESC LIMIT ?,10;";
+            }
 
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, page * 10);

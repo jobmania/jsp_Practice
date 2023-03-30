@@ -17,6 +17,7 @@
 <%-- 추가적으로 ajax 구현--%>
 
   <div class="container" style="width:50%">
+    <h1 id="subject"> 로그인 </h1>
     <form action="/login" method="post">
       <p>
         <font color="red">${error}</font>

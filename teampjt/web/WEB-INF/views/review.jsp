@@ -24,10 +24,25 @@
 
 <div class="container" style="width:70%">
 
-  <h1> 전체 리뷰페이지  </h1>
+  <h1> ${board} 리뷰페이지  </h1>
+
+
+
 
   <%--   sort창   --%>
   <form id="searchBar" action="/review" method="get">
+
+    <span class="btn_img select">
+            <select id="board_target" name="board">
+            <option value="Total">전체 리뷰 보기</option>
+            <option value="diner">음식점 리뷰만 보기</option>
+            <option value="hall">공연 리뷰만 보기</option>
+            <option value="library">도서관 리뷰만 보기</option>
+            <option value="cafe">카페 리뷰만 보기</option>
+            <option value="gym">헬스장 리뷰만 보기</option>
+            </select>
+    </span>
+
 
     <span class="btn_img select">
             <select id="sort_target" name="sort">
@@ -73,7 +88,7 @@
             ⭐
           </c:forEach>
         </td>
-        <td>${review.email  }</td>
+        <td>${review.email}</td>
         <td><a class="btn btn-primary" href="/review/${review.id}">상세 보기</a></td>
       </tr>
     </c:forEach>
@@ -100,7 +115,7 @@
           if (currentPage != 1) { // 첫번째 버튼이 아니라면 이전 표시추가
         %>
 
-        <li class="page-item"><a class="page-link" href="/review?page=<%= currentPage-1 %>&sort=${sort}">previous</a></li>
+        <li class="page-item"><a class="page-link" href="/review?page=<%= currentPage-1 %>&sort=${sort}&board=${board}">previous</a></li>
         <% } %>
 
         <% for (int i = startPage; i <= endPage; i++) {
@@ -108,15 +123,15 @@
             continue;
           }
           if (i == currentPage) { %>
-        <li class="page-item active"><a class="page-link" href="/review?page=<%= i %>&sort=${sort}"><%= i %></a></li>
+        <li class="page-item active"><a class="page-link" href="/review?page=<%= i %>&sort=${sort}&board=${board}"><%= i %></a></li>
         <% } else { %>
-        <li class="page-item"><a class="page-link" href="/review?page=<%= i %>&sort=${sort}"><%= i %></a></li>
+        <li class="page-item"><a class="page-link" href="/review?page=<%= i %>&sort=${sort}&board=${board}"><%= i %></a></li>
         <% } %>
         <% } %>
 
 
         <% if (currentPage != totalPages  && totalPages!=0 ) { %>
-        <li class="page-item"><a class="page-link" href="/review?page=<%= currentPage+1 %>&sort=${sort}">next</a></li>
+        <li class="page-item"><a class="page-link" href="/review?page=<%= currentPage+1 %>&sort=${sort}&board=${board}">next</a></li>
         <% } %>
       </ul>
     </nav>
