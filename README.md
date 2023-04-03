@@ -11,8 +11,8 @@ JSP, sevlet 기반 게시판 서비스 제작.
 ![jsp_erd](https://user-images.githubusercontent.com/108961843/227095351-310d8e54-4c70-4ae7-83bc-7ca2c1666471.png)
 
 ## ERD_2차
+![FinalErd](https://user-images.githubusercontent.com/108961843/229397631-600d6146-fa7e-40bd-b09a-04613c213b20.png)
 
-![databaseMoel_ver02](https://user-images.githubusercontent.com/108961843/228146189-15bd5c78-57ce-48cd-b04d-08bfe95801a3.png)
 
 
 톰캣 라이브러리 추가
