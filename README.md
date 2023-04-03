@@ -2,7 +2,7 @@
 JSP, sevlet 기반 게시판 서비스 제작.
 
 
-샤용 도구, 라이브러리 : MYSQL, Tomcat Server(8버젼), 부트스트랩
+샤용 도구, 라이브러리 : MYSQL, Tomcat Server(9버젼), 부트스트랩
 
 
 
