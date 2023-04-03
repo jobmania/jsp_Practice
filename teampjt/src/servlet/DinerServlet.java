@@ -45,7 +45,6 @@ public class DinerServlet extends HttpServlet {
          request.setAttribute("data",jsonData);
         */
 
-
         // 총 페이지 갯수 ! -> 15페이지
         int totalPages = (int) Math.ceil((double) totalCount / 10);
 

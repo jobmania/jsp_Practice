@@ -28,7 +28,7 @@ public class ReviewWriteServlet extends HttpServlet {
                 request.setAttribute("board_id", boardId);
                 request.setAttribute("board_target", boardTarget);
                 request.getRequestDispatcher("/WEB-INF/views/review-write.jsp").forward(request, response);
-            } else {  // 글 수정 /35
+            } else {  // 글 수정
 
                 String reviewId = pathInfo.substring(1);
                 Review findReview = reviewService.getReview(reviewId);
