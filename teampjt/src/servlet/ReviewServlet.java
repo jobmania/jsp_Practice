@@ -52,10 +52,7 @@ public class ReviewServlet extends HttpServlet {
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
 
     private int getPage(HttpServletRequest request) {
         String stringPage = request.getParameter("page");
