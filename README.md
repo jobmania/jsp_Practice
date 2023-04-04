@@ -3,6 +3,7 @@ JSP, sevlet 기반 게시판 서비스 제작.
 
 
 샤용 도구, 라이브러리 : MYSQL, Tomcat Server(9버젼), 부트스트랩
+OPEN API : 네이버 클라우드 Static Map, Geocoding 
 
 
 
