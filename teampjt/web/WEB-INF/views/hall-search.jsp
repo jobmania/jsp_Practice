@@ -16,20 +16,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
     <%@ include file="../common/style.jspf"%>
+    <script>
+        function handleCheckShowing() {
+            const checkbox = document.getElementById('flexCheckDefault');
+            if (checkbox.checked) {
+                checkbox.value = true;
+            } else {
+                checkbox.value = false;
+            }
+        }
+    </script>
 </head>
 <body>
 <%@ include file="../common/navigation.jspf"%>
 
 
 <div class="container" style="width:70%">
-    <h1> 음식 검색 정보 </h1>
+    <h1> 공연 게시판 </h1>
     <div class="d-flex justify-content-end">
-        <a class="btn btn-primary" href="/diner?page=1">음식 리스트로 돌아가기</a>
+        <a class="btn btn-primary" href="/hall?page=1">공연장 리스트로 돌아가기</a>
     </div>
 
 
     <%--   검색창   --%>
-    <form id="searchBar" action="/diner/search" method="get">
+    <form id="searchBar" action="/hall/search" method="get">
         <span class="btn_img itx_wrp">
             <label for="search_keyword">검색</label>
             <input type="text" name="search_keyword" id="search_keyword" class="bd_srch_btm_itx srch_itx" value="${searchKeyword}">
@@ -38,15 +48,23 @@
             <select id="search_target" name="search_target">
             <option value="name">이름</option>
             <option value="address">주소</option>
-            <option value="dish">요리</option>
             </select>
         </span>
-        <span>
-       <input type="hidden" name="page" value="1"> <%-- 페이지 1 값 보내기 --%>
-        </span>
         <button type="submit" class="ico_16px search">Search</button>
-    </form>
+        <span>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkShowing"  onchange="handleCheckShowing()">
+              <label class="form-check-label" for="flexCheckDefault">
+               상영중인 공연만 보기
+          </label>
+            </div>
+        </span>
 
+        <span>
+         <input type="hidden" name="page" value="1"> <%-- 페이지 1 값 보내기 --%>
+        </span>
+
+    </form>
 
 
     <%-- 테이블 --%>
@@ -56,28 +74,28 @@
         <thead>
         <tr>
             <th>번호</th>
-            <th>음식점 이름</th>
+            <th>공연장 이름</th>
             <th>주소</th>
-            <th>음식점 전화번호</th>
-            <th>메인 요리</th>
+            <th>개장일</th>
+            <th>폐관일</th>
         </tr>
         </thead>
         <tbody>
-        <c:if test="${empty diners}">
+        <c:if test="${empty halls}">
             <tr>
                 <td colspan="5">No data available</td>
             </tr>
         </c:if>
 
-        <c:forEach items="${diners}" var="diner" varStatus="status">
+        <c:forEach items="${halls}" var="hall" varStatus="status">
 
             <tr>
                 <td>${(sendPageNum - 1) * 10 + status.index + 1}</td>
-                <td>${diner.name}</td>
-                <td>${diner.address}</td>
-                <td>${diner.phone_num}</td>
-                <td>${diner.dish}</td>
-                <td><a class="btn btn-primary" href="/map?address=${diner.address}&id=${diner.id}&board=diner">상세 보기</a></td>
+                <td>${hall.name}</td>
+                <td>${hall.address}</td>
+                <td>${hall.openDate}</td>
+                <td>${hall.closeDate}</td>
+                <td><a class="btn btn-primary" href="/map?address=${hall.address}&id=${hall.id}&board=hall">상세 보기</a>
             </tr>
         </c:forEach>
         </tbody>
@@ -91,6 +109,7 @@
                     int currentPage = (int) request.getAttribute("sendPageNum");
                     String search_keyword = (String) request.getAttribute("searchKeyword");
                     String search_target = (String) request.getAttribute("searchTarget");
+                    boolean checkShowing = (boolean) request.getAttribute("checkShowing");
                     int startPage = currentPage - 2; // 시작되는 버튼이 표시될 페이지
                     int endPage = currentPage + 2; // 끝나는 버튼이 표시될 페이지
                     // 1,2,3,4 경우
@@ -105,7 +124,7 @@
                     }
                     if (currentPage != 1) { // 첫번째 버튼이 아니라면 이전 표시추가
                 %>
-                <li class="page-item"><a class="page-link" href="/diner/search?page=<%= currentPage-1 %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>">previous</a></li>
+                <li class="page-item"><a class="page-link" href="/hall/search?page=<%= currentPage-1 %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>&checkShowing=<%=checkShowing%>">previous</a></li>
                 <% } %>
 
                 <% for (int i = startPage; i <= endPage; i++) {
@@ -114,15 +133,15 @@
                     }
 
                     if (i == currentPage) { %>
-                <li class="page-item active"><a class="page-link" href="/diner/search?page=<%= i %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>"><%= i %></a></li>
+                <li class="page-item active"><a class="page-link" href="/hall/search?page=<%= i %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>&checkShowing=<%=checkShowing%>"><%= i %></a></li>
                 <% } else { %>
-                <li class="page-item"><a class="page-link" href="/diner/search?page=<%= i %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>"><%= i %></a></li>
+                <li class="page-item"><a class="page-link" href="/hall/search?page=<%= i %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>&checkShowing=<%=checkShowing%>"><%= i %></a></li>
                 <% } %>
                 <% } %>
 
 
                 <% if (currentPage != totalPages && totalPages!=0 ) { %>
-                <li class="page-item"><a class="page-link" href="/diner/search?page=<%= currentPage+1 %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>">next</a></li>
+                <li class="page-item"><a class="page-link" href="/hall/search?page=<%= currentPage+1 %>&search_keyword=<%=search_keyword%>&search_target=<%=search_target%>&checkShowing=<%=checkShowing%>">next</a></li>
                 <% } %>
             </ul>
         </nav>

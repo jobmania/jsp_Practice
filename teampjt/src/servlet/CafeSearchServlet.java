@@ -28,7 +28,7 @@ public class CafeSearchServlet extends HttpServlet {
         page -= 1; // first page =  0
 
         int totalSearchCount = cafeService.getSearchCount(searchKeyword,searchTarget);
-        List<Cafe> cafes = cafeService.getSpecificDiners(searchKeyword, searchTarget,page);
+        List<Cafe> cafes = cafeService.getSpecificCafes(searchKeyword, searchTarget,page);
 
 
 /**

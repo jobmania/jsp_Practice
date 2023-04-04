@@ -1,10 +1,11 @@
 package servlet;
 
+import cafe.Cafe;
+import cafe.CafeService;
 import hall.Hall;
 import hall.HallService;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,43 +13,42 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "hallServlet", value = "/hall",
-		initParams = {@WebInitParam(name="page", value = "1")})
+@WebServlet(name = "hallSearchServlet", value = "/hall/search")
 public class HallSearchServlet extends HttpServlet {
-	
-	HallService hallService = new HallService();
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int page = getPage(request);
 
-		int totalCount = hallService.getCount();
-		List<Hall> pageHalls = hallService.getPageHalls(page);
+    HallService hallService = new HallService();
 
-		// 총 페이지 갯수 ! -> 15페이지
-		int totalPages = (int) Math.ceil((double) totalCount / 10);
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setAttribute("totalPages",totalPages);
-		request.setAttribute("halls", pageHalls);
-		request.setAttribute("sendPageNum",page+1); // 현재 페이지
-		request.getRequestDispatcher("/WEB-INF/views/hall.jsp").forward(request,response);
+        String searchKeyword = request.getParameter("search_keyword");
+        String searchTarget = request.getParameter("search_target");
+        boolean checkShowing = Boolean.parseBoolean(request.getParameter("checkShowing"));
+        // 1페이지당 10개.
+        int page = Integer.parseInt(request.getParameter("page"));
+        page -= 1; // first page =  0
 
-	}
+        int totalSearchCount = hallService.getSearchCount(searchKeyword,searchTarget, checkShowing);
+        List<Hall> halls = hallService.getSpecificHalls(searchKeyword, searchTarget,page,checkShowing);
 
 
-	private int getPage(HttpServletRequest request) {
-		String stringPage = request.getParameter("page");
-		int page ;
+/**
+ *   Gson gson = new Gson();
+ *         String jsonData = gson.toJson(diners);
+ *         request.setAttribute("data",jsonData);
+ * */
 
-		if(stringPage==null){
-			page = Integer.parseInt(this.getInitParameter("page"));
-		}else {
-			page = Integer.parseInt(stringPage);
-		}
+// 총 페이지 갯수
 
+        int totalPages = (int) Math.ceil((double) totalSearchCount / 10);
 
-		// 1페이지당 10개.
-		page -= 1; // first page =
-		return page;
-	}
+        request.setAttribute("searchKeyword", searchKeyword);
+        request.setAttribute("searchTarget", searchTarget);
+        request.setAttribute("totalPages",totalPages);
+        request.setAttribute("checkShowing",checkShowing);
+        request.setAttribute("sendPageNum",page+1);
+        request.setAttribute("halls", halls);
+
+        request.getRequestDispatcher("/WEB-INF/views/hall-search.jsp").forward(request,response);
+    }
 }

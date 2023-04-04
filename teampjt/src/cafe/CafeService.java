@@ -129,7 +129,7 @@ public class CafeService {
         return cafe;
     }
 
-    public List<Cafe> getSpecificDiners(String searchKeyword, String searchTarget, int page) {
+    public List<Cafe> getSpecificCafes(String searchKeyword, String searchTarget, int page) {
         List<Cafe> cafes = new ArrayList<>();
 
 
