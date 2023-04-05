@@ -58,21 +58,19 @@ public class ReviewWriteServlet extends HttpServlet {
         String subject = request.getParameter("subject"); // 제목
         String stars = request.getParameter("stars"); // 별점
         String content = request.getParameter("content"); // 리뷰내용
-
-        if(subject.length() > 15) {
-            request.setAttribute("fail", "입력된 문자열의 길이가 15를 초과했습니다.");
-            request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
-        }
-
-
+        try {
+            if (subject.length() > 15) {
+                request.setAttribute("fail", "입력된 문자열의 길이가 15를 초과했습니다.");
+                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+            }
 
 
-        if (pathInfo == null) {// 새로 작성
-            String username = (String) request.getSession().getAttribute("username");
+            if (pathInfo == null) {// 새로 작성
+                String username = (String) request.getSession().getAttribute("username");
 
 
-            String boardId = request.getParameter("board_id"); // 게시글 아이디
-            String boardTarget = request.getParameter("board_target"); // 게시판 항목
+                String boardId = request.getParameter("board_id"); // 게시글 아이디
+                String boardTarget = request.getParameter("board_target"); // 게시판 항목
 //
 //            // 예외 check????
 //            if(!boardTarget.equals("diner")){
@@ -81,31 +79,37 @@ public class ReviewWriteServlet extends HttpServlet {
 //            }
 
 
-            boolean checkWriting = reviewService.writeReview(username, subject, boardId, boardTarget, stars, content);
+                boolean checkWriting = reviewService.writeReview(username, subject, boardId, boardTarget, stars, content);
 
-            if (checkWriting) {
-                // 성공시
-                response.sendRedirect("/review");
-            } else {
-                //실패시
+                if (checkWriting) {
+                    // 성공시
+                    response.sendRedirect("/review");
+                } else {
+                    //실패시
 
-                request.setAttribute("fail", "제목 또는 내용이 비었습니다.");
-                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+                    request.setAttribute("fail", "제목 또는 내용이 비었습니다.");
+                    request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+                }
+
+            } else { // 글 수정
+                String reviewId = pathInfo.substring(1);
+
+                boolean checkUpdating = reviewService.updateReview(reviewId, subject, stars, content);
+
+                if (checkUpdating) {
+                    //성공시
+                    response.sendRedirect("/review");
+                } else {
+                    request.setAttribute("fail", "제목 또는 내용이 비었습니다.");
+                    request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+                }
+
             }
 
-        } else { // 글 수정
-            String reviewId = pathInfo.substring(1);
 
-            boolean checkUpdating = reviewService.updateReview(reviewId, subject, stars, content);
-
-            if (checkUpdating) {
-                //성공시
-                response.sendRedirect("/review");
-            } else {
-                request.setAttribute("fail", "제목 또는 내용이 비었습니다.");
-                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
-            }
-
+        } catch (RuntimeException e) {
+            request.setAttribute("fail", "올바른 경로를 입력하세요");
+            request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
         }
 
 

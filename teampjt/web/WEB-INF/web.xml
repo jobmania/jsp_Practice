@@ -7,9 +7,6 @@
         <welcome-file>home</welcome-file>
     </welcome-file-list>
 
-
-
-
     <!-- 한글설정 필터추가 -->
     <filter>
         <filter-name>EncodingFilter</filter-name>
