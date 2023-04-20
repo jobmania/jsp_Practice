@@ -13,6 +13,8 @@ OPEN API : 네이버 클라우드 Static Map, Geocoding
 - model 단은 db와 연결 및 서비스 로직 처리 (조회, 생성, 수정, 삭제)
 - view 단은 화면 뷰에 담당하는 로직만 수행 (ex, 페이지네이션, 동적화면구성)
 - 🎇WEB-INF 내에 VIEW 파일을 구성하여 VIEW에 대한 직접적인 접근 X. -> 왜 WHY? 예외접근시 동적화면 구성시 필요한 정보 또는 로직수행시 필요정보 누락 가능성. 
+- 사용자의 예외적인 접근 에 대해선 Exception 처리를 통해 Error페이지 조회
+
 
 ### 상세 정보
 [JSP Sevlet 구조  게시판 리뷰 사이트.pdf](https://github.com/jobmania/jsp_Practice/files/11167419/JSP.Sevlet.pdf)
