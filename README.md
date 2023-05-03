@@ -38,6 +38,13 @@ OPEN API : 네이버 클라우드 Static Map, Geocoding
 + mysql
 
 
+
+-------------------------
+이후 JDBC 템플릿 or Mybatis를 사용 예정
+
+
+
+
 ## 다이어그램 제작 사이트
 https://www.draw.io/
 ## 무료 아이콘 사이트
