@@ -16,7 +16,7 @@ OPEN API : 네이버 클라우드 Static Map, Geocoding
 
 🎇WEB-INF 내에 VIEW 파일을 구성하여 VIEW에 대한 직접적인 접근 X. -> 직접 접근시 동적화면 구성시 필요한 정보 또는 로직수행시 필요정보 누락 가능성.
 
-### 상세 정보
+### 정리 자료 
 [JSP Sevlet 구조  게시판 리뷰 사이트.pdf](https://github.com/jobmania/jsp_Practice/files/11167419/JSP.Sevlet.pdf)
 
 
